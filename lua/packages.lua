@@ -157,6 +157,7 @@ require("packer").startup(function(use)
 
 	use({ "folke/lua-dev.nvim" })
 	use("https://github.com/kmonad/kmonad-vim")
+  use 'https://github.com/nicwest/vim-workman'
 
 	use({
 		"rcarriga/nvim-notify",
@@ -175,5 +176,8 @@ require("packer").startup(function(use)
 	use({ "windwp/nvim-autopairs", config = require("nvim-autopairs").setup({}) })
 	use({ "tamago324/lir.nvim" })
   use 'https://github.com/mbbill/undotree'
-  -- use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
+use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
+use 'ThePrimeagen/harpoon'
+  use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
+use 'ThePrimeagen/git-worktree.nvim'
 end)

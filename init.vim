@@ -40,3 +40,7 @@ autocmd BufWritePost ~/.config/nvim/lua/packerconfig.lua source <afile> | Packer
 lua require('tempkeys')
 lua require('plugins.refactoring')
 lua require('plugins.llr')
+
+nnoremap ; :
+nnoremap : ;
+source $HOME/.config/nvim/keys/harpoon.vim

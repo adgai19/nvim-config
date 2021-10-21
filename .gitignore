@@ -1,0 +1,8 @@
+autoload
+plugin
+nvim-ts-autotag
+lua/tem*
+lua/[packer]
+sessions
+lua/[packer]
+

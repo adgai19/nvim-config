@@ -1,16 +1,10 @@
-local system_name
-if vim.fn.has("mac") == 1 then
-	system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-	system_name = "Linux"
-elseif vim.fn.has("win32") == 1 then
-	system_name = "Windows"
-else
-	print("Unsupported system for sumneko")
-end
+local system_name = "Linux"
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = "/home/adgai/github/lua-language-server/lua-language-server"
+-- require("compe-setup")
+--
+require("cmp-setup")
+local sumneko_root_path = "/home/adgai/github/lua-language-server/"
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
 
 local runtime_path = vim.split(package.path, ";")
@@ -19,7 +13,8 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local library = vim.api.nvim_get_runtime_file("", true)
 table.insert(library, "/usr/share/awesome/lib")
-local  opts={
+local opts = {
+	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
@@ -43,5 +38,5 @@ local  opts={
 	},
 }
 require("lspconfig").sumneko_lua.setup(opts)
--- require("compe-setup")
 
+local temp = vim

@@ -1,4 +1,4 @@
-require'lspconfig'.ccls.setup {}
+require("lspconfig").ccls.setup({})
 
-require'lspconfig'.clangd.setup {}
-require('compe-setup')
+require("lspconfig").clangd.setup({})
+require("compe-setup")

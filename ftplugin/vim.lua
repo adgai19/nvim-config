@@ -1,2 +1,2 @@
-require'lspconfig'.vimls.setup {}
-require('compe-setup')
+require("lspconfig").vimls.setup({})
+require("cmp-setup")

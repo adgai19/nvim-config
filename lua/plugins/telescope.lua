@@ -20,7 +20,7 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 		},
-		file_ignore_patterns = { "build/", "bin/" },
+		file_ignore_patterns = { "build/", "bin/", "target/" },
 		prompt_prefix = ">",
 		selection_strategy = "reset",
 		sorting_strategy = "descending",

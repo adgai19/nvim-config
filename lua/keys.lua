@@ -26,7 +26,7 @@ mapper.nnoremap("<leader>fc", "<cmd>lua require('plugins.telescope').search_dotf
 mapper.nnoremap("<leader>fx", "<cmd>lua require('plugins.telescope').file_browser()<cr>")
 mapper.nnoremap("<leader>fw", "<cmd>lua require('plugins.telescope').find_word()<cr>")
 mapper.nnoremap("<leader>fa", "<cmd>Telescope frecency<cr>")
-mapper.nnoremap("<leader>f","<cmd>lua  require'telescope.builtin'.builtin{}")
+mapper.nnoremap("<leader>f", "<cmd>lua  require'telescope.builtin'.builtin{}")
 mapper.nnoremap("<leader>fcs <cmd>Telescope", "cheat fd<cr>")
 mapper.nnoremap("<leader>fp", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
 mapper.nnoremap(" aj", ":ALENext<CR>")

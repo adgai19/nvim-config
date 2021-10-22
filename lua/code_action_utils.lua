@@ -6,7 +6,8 @@ function M.code_action_listener()
 	local params = lsp_util.make_range_params()
 	params.context = context
 	vim.lsp.buf_request(0, "textDocument/codeAction", params, function(err, _, result)
-		print(result)
+		print(vim.inspect(result.params))
+		print("no of results")
 	end)
 end
 

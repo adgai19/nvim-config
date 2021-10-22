@@ -111,7 +111,8 @@ end
 --   },
 -- })
 require("lspconfig").vimls.setup({})
-vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
+
+--vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
 vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
 vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
 vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
@@ -119,5 +120,13 @@ vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").t
 vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
 vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
 vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
-
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	underline = true,
+	update_in_insert = true,
+	virtual_text = {
+		spacing = 4,
+		prefix = "●",
+	},
+	severity_sort = true,
+})
 return { on_attach = on_attach }

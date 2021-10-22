@@ -3,7 +3,6 @@ local system_name = "Linux"
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 -- require("compe-setup")
 --
-require("cmp-setup")
 local sumneko_root_path = "/home/adgai/github/lua-language-server/"
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
 
@@ -39,4 +38,6 @@ local opts = {
 }
 require("lspconfig").sumneko_lua.setup(opts)
 
+require("cmp-setup")
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
+local lsp = require("cmp.types.lsp")

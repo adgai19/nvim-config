@@ -45,3 +45,4 @@ nnoremap cn *``cgn
 nnoremap cN *``cgN
 
 
+nnoremap Q @q

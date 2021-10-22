@@ -1,3 +1,4 @@
+"workman specific
 nnoremap ; :
 nnoremap : ;
 nnoremap j e
@@ -10,4 +11,37 @@ vnoremap e j
 vnoremap k n
 vnoremap n k
 
+"get out of vim quickly
 nnoremap <M-q> <cmd>q<CR>
+"easy ;
+inoremap ;; <esc>A;
+
+"move text in vs mode
+vnoremap E :m '>+1<CR>gv=gv
+vnoremap N :m '<-2<CR>gv=gv
+
+"split management
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
+nnoremap <Leader>h :split<cr>
+nnoremap <Leader>v :vsplit<cr>
+
+"quickly source 
+nnoremap <Leader>s :w<cr>:so %<cr>
+" greatest remaps ever
+" xnoremap <leader>p "_dP
+"
+" " next greatest remaps ever : asbjornHaland
+" nnoremap <leader>y "+y
+" vnoremap <leader>y "+y
+" nnoremap <leader>Y gg"+yG
+"
+" nnoremap <leader>d "_d
+" vnoremap <leader>d "_d
+
+"handy replace words
+nnoremap cn *``cgn
+nnoremap cN *``cgN
+
+

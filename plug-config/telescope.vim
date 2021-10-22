@@ -11,3 +11,4 @@ nnoremap <leader>f <cmd>Telescope <cr>
 nnoremap <leader>fcs <cmd>Telescope cheat fd<cr>
 nnoremap <leader>fp <cmd>lua require'telescope'.extensions.project.project{}<CR>
 set nocompatible hidden laststatus=2
+nnoremap <leader>fk <cmd>lua require('telescope.builtin').keymaps()<cr>

@@ -5,19 +5,13 @@ end
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
-
 local lspkind = require("lspkind")
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			-- For `vsnip` user.
-			vim.fn["vsnip#anonymous"](args.body)
-
-			-- For `luasnip` user.
+			-- vim.fn["vsnip#anonymous"](args.body)
 			require("luasnip").lsp_expand(args.body)
-
-			-- For `ultisnips` user.
-			vim.fn["UltiSnips#Anon"](args.body)
+			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
 	formatting = {
@@ -29,41 +23,13 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		--   ["<Tab>"] = cmp.mapping(function(fallback)
-		--     if cmp.visible() then
-		--       cmp.select_next_item()
-		--     elseif luasnip.expand_or_jumpable() then
-		--       luasnip.expand_or_jump()
-		--     elseif has_words_before() then
-		--       cmp.complete()
-		--     else
-		--       fallback()
-		--     end
-		--   end, {
-		--     "i",
-		--     "s",
-		--   }),
-		--
-		--   ["<S-Tab>"] = cmp.mapping(function(fallback)
-		--     if cmp.visible() then
-		--       cmp.select_prev_item()
-		--     elseif luasnip.jumpable(-1) then
-		--       luasnip.jump(-1)
-		--     else
-		--       fallback()
-		--     end
-		--   end, {
-		--     "i",
-		--     "s",
-		--   }),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = {
 		{ name = "luasnip" },
-		{ name = "vsnip" },
-		{ name = "ultisnips" },
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "buffer" },
-		{ name = "path" },
+		{ name = "nvim_lua", max_item_count = 10 },
+		{ name = "nvim_lsp", max_item_count = 10 },
+		{ name = "buffer", keyword_length = 4 },
+		{ name = "path", keyword_length = 4 },
 	},
 })

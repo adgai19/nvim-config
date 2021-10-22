@@ -4,23 +4,18 @@ let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/.config/nvim/lsp.log')
 let g:ale_disable_lsp =0 
 source $HOME/.config/nvim/general/settings.vim
-"source $HOME/.config/nvim/general/augrups.vim
 source $HOME/.config/nvim/plug-config/nerdcommentor.vim
-" source $HOME/.config/nvim/plug-config/vim-lua-formatter.vim
-"source $HOME/.config/nvim/plug-config/vimux.vim
-" source $HOME/.config/nvim/keys/vim-fugutive.vim
+source $HOME/.config/nvim/plug-config/vimux.vim
+source $HOME/.config/nvim/keys/vim-fugutive.vim
 source $HOME/.config/nvim/keys/common.vim
 " source $HOME/.config/nvim/plug-config/lspsaga.vim
-" source $HOME/.config/nvim/plug-config/vim-closetag.vim
 source $HOME/.config/nvim/plug-config/start-screen.vim
 " source $HOME/.config/nvim/plug-config/vim-devicons.vim
 " source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 " source $HOME/.config/nvim/plug-config/floterm.vim
-" source $HOME/.config/nvim/plug-config/wilder.vim
 " source $HOME/.config/nvim/plug-config/vim-go.vim
-" source $HOME/.config/nvim/general/lua_format.vim
-" source $HOME/.config/nvim/keys/quikfixlist.vim
+source $HOME/.config/nvim/keys/quikfixlist.vim
 lua require('plugins.telescope')
 lua require('packages')
 lua require('plugins.lualine')
@@ -50,4 +45,3 @@ tnoremap <Esc> <C-\><C-n>
 set updatetime=2000
 autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
 " set rtp+=/home/adgai/github/harpoon.git/add_term_cmds
-autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()

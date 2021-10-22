@@ -1,4 +1,3 @@
-
 local signs = {
 	Error = " ",
 	Warning = " ",
@@ -6,9 +5,9 @@ local signs = {
 	Information = " ",
 }
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    source = "always",  -- Or "if_many"
-  }
+	virtual_text = {
+		source = "always", -- Or "if_many"
+	},
 })
 for type, icon in pairs(signs) do
 	local hl = "LspDiagnosticsSign" .. type
@@ -121,4 +120,4 @@ vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").i
 vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
 vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 
-return {on_attach=on_attach}
+return { on_attach = on_attach }

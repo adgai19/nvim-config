@@ -24,4 +24,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
-
+"nnoremap <leader>cc  <Plug>NERDCommentorComment
+"nnoremap <leader>cc <plug>NERDCommenterInvert 
+"nnoremap <leader>ci <plug>NERDCommenterComment

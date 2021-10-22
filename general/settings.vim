@@ -29,17 +29,17 @@ set cursorline                          " Enable highlighting of the current lin
 set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs
 "set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
+" set nobackup                            " This is recommended by coc
+" set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set nohlsearch
 set smartcase
-set wildoptions+=pum
+" set wildoptions+=pum
 "set wildmode=
-set wildmode=longest:full,full
+" set wildmode=longest:full,full
 
 set completeopt=menuone,noselect
 "set nowildmenu
@@ -48,7 +48,7 @@ set ignorecase
 "set scrolloff=12
 set autochdir                           " Your working directory will always be the same as your working directory
 let g:airline#extensions#tabline#enabled = 1
-set wildmode=longest,list,full
+" set wildmode=longest,list,full
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 set incsearch
 set confirm
@@ -57,20 +57,20 @@ set confirm
 "  \|   PlugInstall --sync | q
 "  \| endif
 " You can't stop me
-cmap w!! w !sudo tee %
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_powerline_fonts = 1
+" cmap w!! w !sudo tee %
+" let g:airline#extensions#tabline#formatter = 'default'
+" let g:airline_powerline_fonts = 1
 set showtabline=0
 set nocompatible
-let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+" let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 let g:CtrlSpaceFileEngine = "auto""
 au ColorScheme * hi Normal ctermbg=none guibg=none
 "let g:kite_supported_languages = ['python', 'javascript','go']
 "
-let g:kite_supported_languages = ['*']
+" let g:kite_supported_languages = ['*']
 "au BufWrite * :Autoformat
-autocmd FileType javascript let b:coc_suggest_disable=1
-let g:auto_comma_or_semicolon_events = ["InsertLeave"]
+" autocmd FileType javascript let b:coc_suggest_disable=1
+" let g:auto_comma_or_semicolon_events = ["InsertLeave"]
 let g:tmux_navigator_save_on_switch = 2
 autocmd FileType markdown setlocal spell
 
@@ -81,7 +81,7 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
 
 set shell=/bin/bash
 autocmd FileType yml let b:autoformat_autoindent=0
@@ -90,5 +90,5 @@ set termguicolors
 colorscheme tokyonight
 set background=dark
 "autocmd BufEnter * lua require'completion'.on_attach()
-imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 

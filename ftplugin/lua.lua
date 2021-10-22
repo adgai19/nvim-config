@@ -39,4 +39,4 @@ local opts = {
 }
 require("lspconfig").sumneko_lua.setup(opts)
 
-local temp = vim
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])

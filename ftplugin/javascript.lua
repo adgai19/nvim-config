@@ -1,32 +1,31 @@
+local lspconfig = require("lspconfig")
 
-local lspconfig = require'lspconfig'
+local prettier = require("efm/prettier")
+local eslint = require("efm/eslint")
 
-local prettier = require'efm/prettier'
-local eslint = require'efm/eslint'
-
-local on_attach=require('lsp').on_attach
+local on_attach = require("lsp").on_attach
 
 -- TSServer Setup
 print("tsserver")
-lspconfig.tsserver.setup {
-  -- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
-  -- settings = { documentFormatting = false },
-  -- on_attach = on_attach
+lspconfig.tsserver.setup({
+	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
+	-- settings = { documentFormatting = false },
+	on_attach = on_attach,
+})
 
-}
-
-
+require("lspconfig").eslint.setup({})
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
 local languages = {
-  typescript = { prettier, eslint },
-  javascript = { prettier, eslint },
-  typescriptreact = { prettier, eslint },
-  javascriptreact = { prettier, eslint },
-  yaml = { prettier },
-  json = { prettier },
-  html = { prettier },
-  scss = { prettier },
-  css = { prettier },
-  markdown = { prettier },
+	typescript = { prettier, eslint },
+	javascript = { prettier, eslint },
+	typescriptreact = { prettier, eslint },
+	javascriptreact = { prettier, eslint },
+	yaml = { prettier },
+	json = { prettier },
+	html = { prettier },
+	scss = { prettier },
+	css = { prettier },
+	markdown = { prettier },
 }
 
 print("efm")

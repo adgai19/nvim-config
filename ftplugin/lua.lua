@@ -15,6 +15,7 @@ table.insert(library, "/usr/share/awesome/lib")
 local opts = {
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	on_attach = require("lsp").on_attach,
 	settings = {
 		Lua = {
 			runtime = {
@@ -37,7 +38,8 @@ local opts = {
 	},
 }
 require("lspconfig").sumneko_lua.setup(opts)
+--require("lsp")
 
 require("cmp-setup")
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
-local lsp = require("cmp.types.lsp")
+--local lsp = require("cmp.types.lsp")

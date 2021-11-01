@@ -5,6 +5,7 @@ end
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -22,7 +23,27 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
 	},
 	sources = {
 		{ name = "luasnip" },
@@ -34,8 +55,7 @@ cmp.setup({
 })
 require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { path = "./my-snippets/"} as well
 
-
-vim.cmd [[
+vim.cmd([[
   imap <silent><expr> <c-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-k>'
   inoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
 
@@ -43,4 +63,4 @@ vim.cmd [[
 
   snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<CR>
   snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
-]]
+]])

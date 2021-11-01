@@ -9,10 +9,11 @@ source $HOME/.config/nvim/general/settings.vim
 " source $HOME/.config/nvim/keys/vim-fugutive.vim
 " source $HOME/.config/nvim/keys/common.vim
 " source $HOME/.config/nvim/plug-config/lspsaga.vim
-" source $HOME/.config/nvim/plug-config/start-screen.vim
+source $HOME/.config/nvim/plug-config/start-screen.vim
 " source $HOME/.config/nvim/plug-config/vim-devicons.vim
 " source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
+"source $HOME/.config/nvim/plug-config/emmet.vim
 " source $HOME/.config/nvim/plug-config/floterm.vim
 " source $HOME/.config/nvim/plug-config/vim-go.vim
 " source $HOME/.config/nvim/keys/quikfixlist.vim
@@ -21,6 +22,7 @@ lua require('packages')
 lua require('plugins.lualine')
 lua require('plugins.treesitter')
 lua require('lsp')
+lua require('cmp-setup')
 "lua require('plugins.neorg')
 " lua require('keys')
 " lua require('dapsetup')
@@ -29,8 +31,6 @@ lua require('lsp')
 " lua require('rustTools')
 " lua require('debugger')
 set guifont=Fira\ Code\ Nerd\ Font:8
-" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-" \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 autocmd BufWritePost ~/.config/nvim/lua/packages.lua source <afile> | PackerSync
 " lua require('tempkeys')
 " lua require('plugins.refactoring')
@@ -38,7 +38,10 @@ autocmd BufWritePost ~/.config/nvim/lua/packages.lua source <afile> | PackerSync
 " lua require'plugins.sidebar'
 source $HOME/.config/nvim/keys/harpoon.vim
 source $HOME/.config/nvim/keys/qol.vim
-
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END
 
 " command! -nargs=* Wrap set wrap linebreak nolist
 tnoremap <Esc> <C-\><C-n>

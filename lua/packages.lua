@@ -63,6 +63,8 @@ return packer.startup(function()
 			require("todo-comments").setup({})
 		end,
 	})
+
+	use("folke/lsp-colors.nvim")
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -91,6 +93,7 @@ return packer.startup(function()
 	--lsp
 	--use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
 	-- use("nvim-lua/lsp_extensions.nvim")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("neovim/nvim-lspconfig")
 	use("mfussenegger/nvim-jdtls")
 	-- use("simrat39/rust-tools.nvim")
@@ -164,6 +167,60 @@ return packer.startup(function()
 	use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
 	use("mattn/emmet-vim")
+	use({
+		"beauwilliams/focus.nvim",
+		cmd = { "FocusSplitNicely", "FocusSplitCycle" },
+		module = "focus",
+		config = function()
+			require("focus").setup({ hybridnumber = true })
+
+			local focusmap = function(direction)
+				vim.api.nvim_set_keymap(
+					"n",
+					"<Leader>" .. direction,
+					":lua require'focus'.split_command('" .. direction .. "')<CR>",
+					{ silent = true }
+				)
+			end
+			-- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
+			focusmap("h")
+			focusmap("j")
+			focusmap("k")
+			focusmap("l")
+			vim.api.nvim_set_keymap("n", "<c-g>", ":FocusSplitNicely<CR>", { silent = true })
+		end,
+	})
+	use({
+		"tjdevries/cyclist.vim",
+		config = function()
+			vim.cmd([[
+
+nnoremap <leader>cn <Plug>CyclistNext
+nnoremap <leader>cp <Plug>CyclistPrev
+call cyclist#add_listchar_option_set('limited', {
+        \ 'eol': '↲',
+        \ 'tab': '» ',
+        \ 'trail': '·',
+        \ 'extends': '<',
+        \ 'precedes': '>',    
+        \ 'conceal': '┊',
+        \ 'nbsp': '␣',
+        \ })
+
+call cyclist#add_listchar_option_set('busy', {
+        \ 'eol': '↲',
+        \ 'tab': '»·',
+        \ 'space': '␣',
+        \ 'trail': '-',
+        \ 'extends': '☛',
+        \ 'precedes': '☚',    
+        \ 'conceal': '┊',
+        \ 'nbsp': '☠',
+        \ })
+
+    ]])
+		end,
+	})
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
 
 	--idk what these do

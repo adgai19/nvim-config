@@ -22,6 +22,9 @@ require("nvim-treesitter.configs").setup({
 			node_decremental = "grm",
 		},
 	},
+	context_commentstring = {
+		enable = true,
+	},
 	-- indent = {enable = true},
 	refactor = {
 		highlight_definitions = { enable = true },

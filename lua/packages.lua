@@ -27,7 +27,19 @@ return packer.startup(function()
 	use("hrsh7th/cmp-nvim-lua")
 	use("honza/vim-snippets")
 	use("hrsh7th/cmp-buffer")
+	use({
+		"SirVer/ultisnips",
+		requires = { { "honza/vim-snippets", rtp = "." } },
+		config = function()
+			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
+			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
+			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
+			vim.g.UltiSnipsRemoveSelectModeMappings = 0
+		end,
+	})
 	-- use("SirVer/ultisnips")
+	use("https://github.com/mlaursen/vim-react-snippets")
 	use({ "saadparwaiz1/cmp_luasnip" })
 	use("onsails/lspkind-nvim")
 	use("L3MON4D3/LuaSnip")
@@ -104,17 +116,9 @@ return packer.startup(function()
 		"simrat39/symbols-outline.nvim",
 		config = function()
 			local opts = {
-				-- whether to highlight the currently hovered symbol
-				-- disable if your cpu usage is higher than you want it
-				-- or you just hate the highlight
-				-- default: true
 				highlight_hovered_item = true,
-
-				-- whether to show outline guides
-				-- default: true
 				show_guides = true,
 			}
-
 			require("symbols-outline").setup(opts)
 		end,
 	})
@@ -127,7 +131,8 @@ return packer.startup(function()
 	-- use 'tpope/vim-obsession'
 	-- use 'tpope/vim-unimpaired'
 	use("tpope/vim-scriptease")
-
+	use("tpope/vim-commentary")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 	--dap
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
@@ -140,7 +145,7 @@ return packer.startup(function()
 	--other helpers
 	use("junegunn/rainbow_parentheses.vim")
 	use("sbdchd/neoformat")
-	use("preservim/nerdcommenter")
+	--use("preservim/nerdcommenter")
 	use("mhinz/vim-startify")
 	-- use("jiangmiao/auto-pairs")
 	use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
@@ -221,6 +226,8 @@ call cyclist#add_listchar_option_set('busy', {
     ]])
 		end,
 	})
+
+	use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
 
 	--idk what these do

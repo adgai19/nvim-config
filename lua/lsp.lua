@@ -129,4 +129,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	},
 	severity_sort = true,
 })
+local texn
 return { on_attach = on_attach }

@@ -14,7 +14,7 @@ vnoremap n k
 "get out of vim quickly
 nnoremap <M-q> <cmd>q<CR>
 "easy ;
-inoremap ;; <esc>A;
+noremap ;; <esc>A;
 
 "move text in vs mode
 vnoremap E :m '>+1<CR>gv=gv
@@ -33,12 +33,13 @@ nnoremap <Leader>s :w<cr>:so %<cr>
 " xnoremap <leader>p "_dP
 "
 " " next greatest remaps ever : asbjornHaland
-" nnoremap <leader>y "+y
-" vnoremap <leader>y "+y
-" nnoremap <leader>Y gg"+yG
+" yank remaps
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
 "
-" nnoremap <leader>d "_d
-" vnoremap <leader>d "_d
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
 "handy replace words
 nnoremap cn *``cgn
@@ -46,3 +47,8 @@ nnoremap cN *``cgN
 
 
 nnoremap Q @q
+
+nnoremap J mzJ`z
+
+
+tnoremap <Esc> <C-\><C-n>

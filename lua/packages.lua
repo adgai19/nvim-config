@@ -227,6 +227,8 @@ call cyclist#add_listchar_option_set('busy', {
 		end,
 	})
 
+	use("jeffkreeftmeijer/vim-numbertoggle")
+
 	use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
 

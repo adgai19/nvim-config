@@ -87,8 +87,8 @@ cmp.setup({
 		-- 			fallback()
 		-- 		end
 		-- 	end,
-		-- }), -- 
-    ["<Tab>"] = cmp.mapping(function(fallback)
+		-- }), --
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
@@ -136,4 +136,3 @@ vim.cmd([[
   snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<CR>
   snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
 ]])
-

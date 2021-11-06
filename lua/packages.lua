@@ -1,8 +1,7 @@
 local packer = require("packer")
 local use = packer.use
 return packer.startup(function()
-	--use("vim-scripts/loremipsum")
-
+	use("lewis6991/impatient.nvim")
 	use({ "wbthomason/packer.nvim" })
 
 	-- colorschemes
@@ -123,7 +122,7 @@ return packer.startup(function()
 	})
 
 	--tpope
-	use 'tpope/vim-eunuch'
+	use("tpope/vim-eunuch")
 	-- use("tpope/vim-dispatch")
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
@@ -144,10 +143,10 @@ return packer.startup(function()
 	--other helpers
 	use("junegunn/rainbow_parentheses.vim")
 	use("sbdchd/neoformat")
--- use {
---   'romgrk/barbar.nvim',
---   requires = {'kyazdani42/nvim-web-devicons'}
--- }
+	-- use {
+	--   'romgrk/barbar.nvim',
+	--   requires = {'kyazdani42/nvim-web-devicons'}
+	-- }
 	use("mhinz/vim-startify")
 	-- use("jiangmiao/auto-pairs")
 	use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
@@ -233,7 +232,7 @@ call cyclist#add_listchar_option_set('busy', {
 
 	use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
-  --
+	--
 
 	--idk what these do
 	-- use("romainl/vim-qf")
@@ -276,11 +275,11 @@ call cyclist#add_listchar_option_set('busy', {
 	--
 	--
 	use({
-	"ThePrimeagen/refactoring.nvim",
-	requires = {
-	{ "nvim-lua/plenary.nvim" },
-	{ "nvim-treesitter/nvim-treesitter" },
-	},
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	})
 
 	-- use({ "tamago324/lir.nvim" })

@@ -1,3 +1,5 @@
+vim.lsp.set_log_level("info")
+vim.g["lsp_log_verbose"] = 1
 
 local on_attach = function(client, bufnr)
 	local resolved_capabilities = client.resolved_capabilities
@@ -36,5 +38,7 @@ end
 
 require("lsp.lspconfig")
 require("lsp.handlers")
+
+local on_attach = require("lsp.on_attach").on_attach
 
 return { on_attach = on_attach }

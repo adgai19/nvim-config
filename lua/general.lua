@@ -76,4 +76,4 @@ augroup numbertoggle
 augroup END
 ]])
 
-vim.opt.updatetime=2000
+vim.opt.updatetime = 2000

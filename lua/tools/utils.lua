@@ -17,7 +17,6 @@ function utils.map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-
 function utils.bmap(mode, lhs, rhs, opts)
 	local options = { noremap = true }
 	if opts then

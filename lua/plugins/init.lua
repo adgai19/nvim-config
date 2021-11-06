@@ -1,9 +1,9 @@
-require('plugins.telescope')
-require('plugins.lualine')
-require('plugins.treesitter')
+require("plugins.telescope")
+require("plugins.lualine")
+require("plugins.treesitter")
 require("plugins.startify")
 require("plugins.tokyonight")
-require('plugins.cmp-setup')
+require("plugins.cmp-setup")
 
 local refactor = require("refactoring")
 refactor.setup()

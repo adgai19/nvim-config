@@ -1,12 +1,11 @@
-vim.lsp.set_log_level("info")
+require('impatient')
 require'general'
-vim.g['lsp_log_verbose'] = 1
-vim.g['ale_disable_lsp'] =0 
-
+require'impatient'.enable_profile()
 require("autocmds")
 require('packages')
 require('lsp')
 require('plugins')
+require("packer").init()
 vim.cmd([[
 source $HOME/.config/nvim/plug-config/telescope.vim
 source $HOME/.config/nvim/keys/quikfixlist.vim

@@ -1,28 +1,26 @@
 vim.lsp.set_log_level("info")
 require'general'
 vim.g['lsp_log_verbose'] = 1
--- vim.g['lsp_log_file'] = vim.api.expand('~/.config/nvim/lsp.log')
 vim.g['ale_disable_lsp'] =0 
-vim.cmd([[
-set guifont=Fira\ Code\ Nerd\ Font:8
-autocmd BufWritePost ~/.config/nvim/lua/packages.lua source <afile> | PackerSync
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-augroup END
-set updatetime=2000
-]])
 
-require('plugins.telescope')
+require("autocmds")
 require('packages')
-require('plugins.lualine')
-require('plugins.treesitter')
-require("plugins.startify")
 require('lsp')
-require('cmp-setup')
+require('plugins')
 vim.cmd([[
 source $HOME/.config/nvim/plug-config/telescope.vim
 source $HOME/.config/nvim/keys/quikfixlist.vim
 source $HOME/.config/nvim/keys/harpoon.vim
 source $HOME/.config/nvim/keys/qol.vim
+source $HOME/.config/nvim/keys/refactoring.vim
+source $HOME/.config/nvim/general/augrups.vim
 ]])
+
+
+vim.cmd[[
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> <c-s> :exe "tabn ".g:lasttab<cr>
+nnoremap <leader>t :tabnew<CR>
+
+vnoremap <silent> <c-s> :exe "tabn ".g:lasttab<cr>
+]]

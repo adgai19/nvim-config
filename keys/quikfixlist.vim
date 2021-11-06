@@ -1,7 +1,7 @@
 " qf list
-nnoremap <leader>ck :cnext<CR>
-nnoremap <leader>co :cprevious<CR>
-nnoremap <leader>ct :cclose<CR>
+nnoremap <M-e> :cnext<CR>
+nnoremap <M-o> :cprevious<CR>
+nnoremap <M-c> :cclose<CR>
 
 nnoremap <leader>lk :lnext<CR>
 nnoremap <leader>lo :lprevious<CR>

@@ -40,6 +40,6 @@ local opts = {
 require("lspconfig").sumneko_lua.setup(opts)
 --require("lsp")
 
-require("cmp-setup")
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
+-- require("plugins.cmp-setup")
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('lsp.code_action_utils').code_action_listener()]])
 --local lsp = require("cmp.types.lsp")

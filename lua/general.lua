@@ -63,7 +63,7 @@ vim.cmd([[autocmd FileType markdown vim.opt.spell]])
 vim.opt.shell = "/bin/bash"
 vim.g["python3_host_prog"] = "/usr/bin/python3"
 vim.opt.termguicolors = true
-vim.cmd("colorscheme tokyonight")
+
 vim.opt.background = "dark"
 vim.cmd([[
 
@@ -75,3 +75,5 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 ]])
+
+vim.opt.updatetime=2000

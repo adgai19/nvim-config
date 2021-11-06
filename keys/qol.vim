@@ -25,7 +25,7 @@ nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 
 nnoremap <Leader>h :split<cr>
-nnoremap <Leader>v :vsplit<cr>
+nnoremap <Leader>v :vsplit
 
 "quickly source 
 nnoremap <Leader>s :w<cr>:so %<cr>
@@ -52,3 +52,9 @@ nnoremap J mzJ`z
 
 
 tnoremap <Esc> <C-\><C-n>
+
+
+nnoremap <C-up> gt
+nnoremap <C-down> gT
+
+nnoremap <leader>m :Mkdir 

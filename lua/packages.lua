@@ -38,7 +38,6 @@ return packer.startup(function()
 			vim.g.UltiSnipsRemoveSelectModeMappings = 0
 		end,
 	})
-	-- use("SirVer/ultisnips")
 	use("https://github.com/mlaursen/vim-react-snippets")
 	use({ "saadparwaiz1/cmp_luasnip" })
 	use("onsails/lspkind-nvim")
@@ -124,7 +123,7 @@ return packer.startup(function()
 	})
 
 	--tpope
-	-- use 'tpope/vim-eunuch'
+	use 'tpope/vim-eunuch'
 	-- use("tpope/vim-dispatch")
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
@@ -145,7 +144,10 @@ return packer.startup(function()
 	--other helpers
 	use("junegunn/rainbow_parentheses.vim")
 	use("sbdchd/neoformat")
-	--use("preservim/nerdcommenter")
+-- use {
+--   'romgrk/barbar.nvim',
+--   requires = {'kyazdani42/nvim-web-devicons'}
+-- }
 	use("mhinz/vim-startify")
 	-- use("jiangmiao/auto-pairs")
 	use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
@@ -231,6 +233,7 @@ call cyclist#add_listchar_option_set('busy', {
 
 	use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
+  --
 
 	--idk what these do
 	-- use("romainl/vim-qf")
@@ -272,13 +275,13 @@ call cyclist#add_listchar_option_set('busy', {
 	--
 	--
 	--
-	-- use({
-	-- "ThePrimeagen/refactoring.nvim",
-	-- requires = {
-	-- { "nvim-lua/plenary.nvim" },
-	-- { "nvim-treesitter/nvim-treesitter" },
-	-- },
-	-- })
+	use({
+	"ThePrimeagen/refactoring.nvim",
+	requires = {
+	{ "nvim-lua/plenary.nvim" },
+	{ "nvim-treesitter/nvim-treesitter" },
+	},
+	})
 
 	-- use({ "tamago324/lir.nvim" })
 

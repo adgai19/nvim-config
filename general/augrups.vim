@@ -1,21 +1,13 @@
 augroup markdownSpell
     autocmd!
     autocmd FileType markdown setlocal spell
-    "autocmd FileType markdown set wrap
-    "autocmd FileType markdown set linebreak
     autocmd BufRead,BufNewFile *.md setlocal spell
-    "autocmd BufRead,BufNewFile *.md setlocal wrap
-    "autocmd BufRead,BufNewFile *.md setlocal linebreak
 augroup END
 
 augroup texspell
     autocmd!
     autocmd FileType tex setlocal spell
-    "autocmd FileType tex set wrap
-    "autocmd FileType tex set linebreak
     autocmd BufRead,BufNewFile *.tex setlocal spell
-    "autocmd BufRead,BufNewFile *.tex setlocal wrap
-    "autocmd BufRead,BufNewFile *.tex setlocal linebreak
 augroup END
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>

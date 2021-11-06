@@ -14,7 +14,7 @@ lspconfig.tsserver.setup({
 })
 
 require("lspconfig").eslint.setup({})
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('lsp.code_action_utils').code_action_listener()]])
 local languages = {
 	typescript = { prettier, eslint },
 	javascript = { prettier, eslint },

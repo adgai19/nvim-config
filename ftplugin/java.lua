@@ -30,9 +30,9 @@ require("jdtls.ui").pick_one_async = function(items, prompt, label_fn, cb)
 	}):find()
 end
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()]])
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('lsp.code_action_utils').code_action_listener()]])
 
-require("cmp-setup")
+-- require("plugins.cmp-setup")
 local config = {
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }

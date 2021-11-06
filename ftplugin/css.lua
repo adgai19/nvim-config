@@ -25,4 +25,4 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 require("lspconfig").cssls.setup({ capabilities = capabilities })
 
-require("cmp-setup")
+-- require("plugins.cmp-setup")

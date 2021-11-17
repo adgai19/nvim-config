@@ -1,2 +1,2 @@
 require("lspconfig").bashls.setup({})
-require("compe-setup")
+-- require("compe-setup")

@@ -19,7 +19,7 @@ return packer.startup(function()
 	-- use("raimondi/delimitmate")
 	--
 	-- completion
-	use("hrsh7th/nvim-compe")
+
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-path")
@@ -106,6 +106,7 @@ return packer.startup(function()
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("neovim/nvim-lspconfig")
 	use("mfussenegger/nvim-jdtls")
+	use("mfussenegger/nvim-fzy")
 	-- use("simrat39/rust-tools.nvim")
 	use("kshenoy/vim-signature")
 	use("RishabhRD/popfix")
@@ -155,24 +156,15 @@ return packer.startup(function()
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
-			require("nvim-autopairs.completion.compe").setup({
-				map_cr = true, --  map <CR> on insert mode
-				map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-				auto_select = false, -- auto select first item
-				map_char = { -- modifies the function or method delimiter by filetypes
-					all = "(",
-					tex = "{",
-				},
-			})
 		end,
 	})
-	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
+	-- use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
 	use("ThePrimeagen/harpoon")
 	use("ThePrimeagen/git-worktree.nvim")
 	--	use({ "mikelue/vim-maven-plugin", ft = { "java" } })
 	use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
-	use("mattn/emmet-vim")
+	use({ "mattn/emmet-vim", ft = "html" })
 	use({
 		"beauwilliams/focus.nvim",
 		cmd = { "FocusSplitNicely", "FocusSplitCycle" },
@@ -230,7 +222,7 @@ call cyclist#add_listchar_option_set('busy', {
 
 	use("jeffkreeftmeijer/vim-numbertoggle")
 
-	use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
+	-- use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })
 	--
 

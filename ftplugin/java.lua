@@ -2,36 +2,61 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local pickers = require("telescope.pickers")
-require("jdtls.ui").pick_one_async = function(items, prompt, label_fn, cb)
-	local opts = {}
-	pickers.new(require("telescope.themes").get_dropdown(opts), {
-		prompt_title = prompt,
-		finder = finders.new_table({
-			results = items,
-			entry_maker = function(entry)
-				return {
-					value = entry,
-					display = label_fn(entry),
-					ordinal = label_fn(entry),
-				}
-			end,
-		}),
-		sorter = sorters.get_generic_fuzzy_sorter(),
-		attach_mappings = function(prompt_bufnr)
-			actions.select_default:replace(function()
-				local selection = actions.get_selected_entry()
-				actions.close(prompt_bufnr)
+-- require("jdtls.ui").pick_one_async = function(items, prompt, label_fn, cb)
+-- 	local opts = {}
+-- 	pickers.new(require("telescope.themes").get_dropdown(opts), {
+-- 		prompt_title = prompt,
+-- 		finder = finders.new_table({
+-- 			results = items,
+-- 			entry_maker = function(entry)
+-- 				return {
+-- 					value = entry,
+-- 					display = label_fn(entry),
+-- 					ordinal = label_fn(entry),
+-- 				}
+-- 			end,
+-- 		}),
+-- 		sorter = sorters.get_generic_fuzzy_sorter(),
+-- 		attach_mappings = function(prompt_bufnr)
+-- 			actions.select_default:replace(function()
+-- 				local selection = actions.get_selected_entry(prompt_bufnr)
+-- 				actions.close(prompt_bufnr)
 
-				cb(selection.value)
-			end)
+-- 				cb(selection.value)
+-- 			end)
 
-			return true
-		end,
-	}):find()
-end
+-- 			return true
+-- 		end,
+-- 	}):find()
+-- end
 
+require("jdtls.ui").pick_one_async = require("fzy").pick_one
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('lsp.code_action_utils').code_action_listener()]])
 
+local function buf_set_keymap(...)
+	vim.api.nvim_buf_set_keymap(bufnr, ...)
+end
+
+-- Mappings.
+local opts = { noremap = true, silent = true }
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 -- require("plugins.cmp-setup")
 local config = {
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -47,7 +72,7 @@ local mapper = require("tools.utils")
 mapper.nnoremap("<A-CR>", "<cmd>lua require('jdtls').code_action()<CR>")
 mapper.vnoremap("<A-CR>", "<Esc><Cmd>lua require('jdtls').code_action(true)<CR>")
 mapper.nnoremap("<leader>r <Cmd>lua", "require('jdtls').code_action(false, 'refactor')<CR>")
-mapper.nnoremap("<A-o>", "<Cmd>lua require'jdtls'.organize_imports()<CR>")
+-- mapper.nnoremap("<A-o>", "<Cmd>lua require'jdtls'.organize_imports()<CR>")
 mapper.nnoremap("crv", "<Cmd>lua require('jdtls').extract_variable()<CR>")
 mapper.vnoremap("crv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>")
 mapper.nnoremap("crc", "<Cmd>lua require('jdtls').extract_constant()<CR>")

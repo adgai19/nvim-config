@@ -1,5 +1,4 @@
 autoload
-plugin
 nvim-ts-autotag
 lua/tem*
 lua/[packer]

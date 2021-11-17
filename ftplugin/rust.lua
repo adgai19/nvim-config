@@ -92,4 +92,4 @@ require("lspconfig").rust_analyzer.setup({
 		},
 	},
 })
-require("compe-setup")
+-- require("compe-setup")

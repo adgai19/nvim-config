@@ -14,7 +14,7 @@ vnoremap n k
 "get out of vim quickly
 nnoremap <M-q> <cmd>q<CR>
 "easy ;
-noremap ;; <esc>A;
+inoremap ;; <esc>A;<CR>
 
 "move text in vs mode
 vnoremap E :m '>+1<CR>gv=gv

@@ -36,7 +36,7 @@ vim.opt.smartcase = true
 
 vim.opt.lazyredraw = true
 vim.opt.completeopt = "menuone,noinsert,noselect"
-vim.opt.swapfile = true
+vim.opt.swapfile = false
 vim.opt.ignorecase = false
 vim.opt.autochdir = true
 vim.cmd([[au! BufWritePost $MYVIMRC source %]])

@@ -6,6 +6,7 @@ nnoremap <leader>gb <cmd>lua require('telescope.builtin').git_branches(require('
 nnoremap <leader>fc <cmd>lua require('plugins.telescope').search_dotfiles()<cr>
 nnoremap <leader>fx <cmd>lua require('plugins.telescope').file_browser()<cr>
 nnoremap <leader>fw <cmd>lua require('plugins.telescope').find_word()<cr>
+nnoremap <leader>fr <cmd>lua require('plugins.telescope').multi_rg()<cr>
 nnoremap <leader>fa <cmd>Telescope frecency<cr>
 nnoremap <leader>f <cmd>Telescope <cr>
 nnoremap <leader>fcs <cmd>Telescope cheat fd<cr>

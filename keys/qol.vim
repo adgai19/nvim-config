@@ -58,3 +58,6 @@ nnoremap <C-up> gt
 nnoremap <C-down> gT
 
 nnoremap <leader>m :Mkdir 
+
+vnoremap < <gv
+vnoremap > >gv

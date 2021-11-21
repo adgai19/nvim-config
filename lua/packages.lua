@@ -1,7 +1,7 @@
 local packer = require("packer")
 local use = packer.use
 return packer.startup(function()
-	use("lewis6991/impatient.nvim")
+	-- use("lewis6991/impatient.nvim")
 	use({ "wbthomason/packer.nvim" })
 
 	-- colorschemes
@@ -37,7 +37,7 @@ return packer.startup(function()
 			vim.g.UltiSnipsRemoveSelectModeMappings = 0
 		end,
 	})
-	use("https://github.com/mlaursen/vim-react-snippets")
+	use("mlaursen/vim-react-snippets")
 	use({ "saadparwaiz1/cmp_luasnip" })
 	use("onsails/lspkind-nvim")
 	use("L3MON4D3/LuaSnip")
@@ -89,14 +89,14 @@ return packer.startup(function()
 			require("trouble").setup({})
 		end,
 	})
-	use({
-		"folke/persistence.nvim",
-		event = "BufReadPre",
-		module = "persistence",
-		config = function()
-			require("persistence").setup()
-		end,
-	})
+	-- use({
+	-- 	"folke/persistence.nvim",
+	-- 	event = "BufReadPre",
+	-- 	module = "persistence",
+	-- 	config = function()
+	-- 		require("persistence").setup()
+	-- 	end,
+	-- })
 	use("folke/lsp-trouble.nvim")
 	use({ "folke/lua-dev.nvim" })
 
@@ -165,62 +165,36 @@ return packer.startup(function()
 	use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
 	use({ "mattn/emmet-vim", ft = "html" })
-	use({
-		"beauwilliams/focus.nvim",
-		cmd = { "FocusSplitNicely", "FocusSplitCycle" },
-		module = "focus",
-		config = function()
-			require("focus").setup({ hybridnumber = true })
+	-- use({
+	-- 	"beauwilliams/focus.nvim",
+	-- 	cmd = { "FocusSplitNicely", "FocusSplitCycle" },
+	-- 	module = "focus",
+	-- 	config = function()
+	-- 		require("focus").setup({ hybridnumber = true })
 
-			local focusmap = function(direction)
-				vim.api.nvim_set_keymap(
-					"n",
-					"<Leader>" .. direction,
-					":lua require'focus'.split_command('" .. direction .. "')<CR>",
-					{ silent = true }
-				)
-			end
-			-- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
-			focusmap("h")
-			focusmap("j")
-			focusmap("k")
-			focusmap("l")
-			vim.api.nvim_set_keymap("n", "<c-g>", ":FocusSplitNicely<CR>", { silent = true })
-		end,
-	})
+	-- 		local focusmap = function(direction)
+	-- 			vim.api.nvim_set_keymap(
+	-- 				"n",
+	-- 				"<Leader>" .. direction,
+	-- 				":lua require'focus'.split_command('" .. direction .. "')<CR>",
+	-- 				{ silent = true }
+	-- 			)
+	-- 		end
+	-- 		-- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
+	-- 		focusmap("h")
+	-- 		focusmap("j")
+	-- 		focusmap("k")
+	-- 		focusmap("l")
+	-- 		vim.api.nvim_set_keymap("n", "<c-g>", ":FocusSplitNicely<CR>", { silent = true })
+	-- 	end,
+	-- })
 	use({
 		"tjdevries/cyclist.vim",
-		config = function()
-			vim.cmd([[
-
-nnoremap <leader>cn <Plug>CyclistNext
-nnoremap <leader>cp <Plug>CyclistPrev
-call cyclist#add_listchar_option_set('limited', {
-        \ 'eol': '↲',
-        \ 'tab': '» ',
-        \ 'trail': '·',
-        \ 'extends': '<',
-        \ 'precedes': '>',    
-        \ 'conceal': '┊',
-        \ 'nbsp': '␣',
-        \ })
-
-call cyclist#add_listchar_option_set('busy', {
-        \ 'eol': '↲',
-        \ 'tab': '»·',
-        \ 'space': '␣',
-        \ 'trail': '-',
-        \ 'extends': '☛',
-        \ 'precedes': '☚',    
-        \ 'conceal': '┊',
-        \ 'nbsp': '☠',
-        \ })
-
-    ]])
-		end,
 	})
 
 	use("jeffkreeftmeijer/vim-numbertoggle")
+
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- use({ "code-biscuits/nvim-biscuits", config = require("nvim-biscuits").setup({}) })
 	--use({ "nacro90/numb.nvim", config = require("numb").setup() })

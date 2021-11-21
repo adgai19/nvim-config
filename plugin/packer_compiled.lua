@@ -100,10 +100,14 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["cyclist.vim"] = {
-    config = { "\27LJ\2\n�\4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0�\4\nnnoremap <leader>cn <Plug>CyclistNext\nnnoremap <leader>cp <Plug>CyclistPrev\ncall cyclist#add_listchar_option_set('limited', {\n        \\ 'eol': '↲',\n        \\ 'tab': '» ',\n        \\ 'trail': '·',\n        \\ 'extends': '<',\n        \\ 'precedes': '>',    \n        \\ 'conceal': '┊',\n        \\ 'nbsp': '␣',\n        \\ })\n\ncall cyclist#add_listchar_option_set('busy', {\n        \\ 'eol': '↲',\n        \\ 'tab': '»·',\n        \\ 'space': '␣',\n        \\ 'trail': '-',\n        \\ 'extends': '☛',\n        \\ 'precedes': '☚',    \n        \\ 'conceal': '┊',\n        \\ 'nbsp': '☠',\n        \\ })\n\n    \bcmd\bvim\0" },
     loaded = true,
     path = "/home/adgai/.local/share/nvim/site/pack/packer/start/cyclist.vim",
     url = "https://github.com/tjdevries/cyclist.vim"
+  },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/adgai/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
   ["emmet-vim"] = {
     loaded = false,
@@ -111,15 +115,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/adgai/.local/share/nvim/site/pack/packer/opt/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
-  },
-  ["focus.nvim"] = {
-    commands = { "FocusSplitNicely", "FocusSplitCycle" },
-    config = { "\27LJ\2\n�\1\0\1\b\0\b\0\0146\1\0\0009\1\1\0019\1\2\1'\3\3\0'\4\4\0\18\5\0\0&\4\5\4'\5\5\0\18\6\0\0'\a\6\0&\5\a\0055\6\a\0B\1\5\1K\0\1\0\1\0\1\vsilent\2\v')<CR>(:lua require'focus'.split_command('\r<Leader>\6n\20nvim_set_keymap\bapi\bvim�\1\1\0\a\0\16\0\0286\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0013\0\4\0\18\1\0\0'\3\5\0B\1\2\1\18\1\0\0'\3\6\0B\1\2\1\18\1\0\0'\3\a\0B\1\2\1\18\1\0\0'\3\b\0B\1\2\0016\1\t\0009\1\n\0019\1\v\1'\3\f\0'\4\r\0'\5\14\0005\6\15\0B\1\5\1K\0\1\0\1\0\1\vsilent\2\26:FocusSplitNicely<CR>\n<c-g>\6n\20nvim_set_keymap\bapi\bvim\6l\6k\6j\6h\0\1\0\1\17hybridnumber\2\nsetup\nfocus\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/adgai/.local/share/nvim/site/pack/packer/opt/focus.nvim",
-    url = "https://github.com/beauwilliams/focus.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -135,11 +130,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adgai/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
-  },
-  ["impatient.nvim"] = {
-    loaded = true,
-    path = "/home/adgai/.local/share/nvim/site/pack/packer/start/impatient.nvim",
-    url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["lightspeed.nvim"] = {
     loaded = true,
@@ -247,14 +237,6 @@ _G.packer_plugins = {
     path = "/home/adgai/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["persistence.nvim"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16persistence\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/adgai/.local/share/nvim/site/pack/packer/opt/persistence.nvim",
-    url = "https://github.com/folke/persistence.nvim"
-  },
   playground = {
     loaded = false,
     needs_bufread = true,
@@ -292,7 +274,7 @@ _G.packer_plugins = {
     url = "https://github.com/tami5/sqlite.lua"
   },
   ["symbols-outline.nvim"] = {
-    config = { "\27LJ\2\nm\0\0\4\0\4\0\b5\0\0\0006\1\1\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\20symbols-outline\frequire\1\0\2\16show_guides\2\27highlight_hovered_item\2\0" },
+    config = { "\27LJ\2\nm\0\0\4\0\4\0\b5\0\0\0006\1\1\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\20symbols-outline\frequire\1\0\2\27highlight_hovered_item\2\16show_guides\2\0" },
     loaded = true,
     path = "/home/adgai/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
@@ -435,55 +417,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
-local module_lazy_loads = {
-  ["^focus"] = "focus.nvim",
-  ["^persistence"] = "persistence.nvim"
-}
-local lazy_load_called = {['packer.load'] = true}
-local function lazy_load_module(module_name)
-  local to_load = {}
-  if lazy_load_called[module_name] then return nil end
-  lazy_load_called[module_name] = true
-  for module_pat, plugin_name in pairs(module_lazy_loads) do
-    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
-      to_load[#to_load + 1] = plugin_name
-    end
-  end
-
-  if #to_load > 0 then
-    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
-    local loaded_mod = package.loaded[module_name]
-    if loaded_mod then
-      return function(modname) return loaded_mod end
-    end
-  end
-end
-
-if not vim.g.packer_custom_loader_enabled then
-  table.insert(package.loaders, 1, lazy_load_module)
-  vim.g.packer_custom_loader_enabled = true
-end
-
--- Config for: cyclist.vim
-time([[Config for cyclist.vim]], true)
-try_loadstring("\27LJ\2\n�\4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0�\4\nnnoremap <leader>cn <Plug>CyclistNext\nnnoremap <leader>cp <Plug>CyclistPrev\ncall cyclist#add_listchar_option_set('limited', {\n        \\ 'eol': '↲',\n        \\ 'tab': '» ',\n        \\ 'trail': '·',\n        \\ 'extends': '<',\n        \\ 'precedes': '>',    \n        \\ 'conceal': '┊',\n        \\ 'nbsp': '␣',\n        \\ })\n\ncall cyclist#add_listchar_option_set('busy', {\n        \\ 'eol': '↲',\n        \\ 'tab': '»·',\n        \\ 'space': '␣',\n        \\ 'trail': '-',\n        \\ 'extends': '☛',\n        \\ 'precedes': '☚',    \n        \\ 'conceal': '┊',\n        \\ 'nbsp': '☠',\n        \\ })\n\n    \bcmd\bvim\0", "config", "cyclist.vim")
-time([[Config for cyclist.vim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-try_loadstring("\27LJ\2\n�\2\0\0\2\0\v\0\0216\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0006\0\0\0009\0\1\0'\1\a\0=\1\6\0006\0\0\0009\0\1\0'\1\t\0=\1\b\0006\0\0\0009\0\1\0)\1\0\0=\1\n\0K\0\1\0&UltiSnipsRemoveSelectModeMappings\15<c-x><c-s>\26UltiSnipsListSnippets$<Plug>(ultisnips_jump_backward)!UltiSnipsJumpBackwardTrigger#<Plug>(ultisnips_jump_forward) UltiSnipsJumpForwardTrigger\29<Plug>(ultisnips_expand)\27UltiSnipsExpandTrigger\6g\bvim\0", "config", "ultisnips")
-time([[Config for ultisnips]], false)
--- Config for: telescope-frecency.nvim
-time([[Config for telescope-frecency.nvim]], true)
-try_loadstring("\27LJ\2\nM\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\rfrecency\19load_extension\14telescope\frequire\0", "config", "telescope-frecency.nvim")
-time([[Config for telescope-frecency.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
@@ -494,25 +431,26 @@ try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B
 time([[Config for todo-comments.nvim]], false)
 -- Config for: symbols-outline.nvim
 time([[Config for symbols-outline.nvim]], true)
-try_loadstring("\27LJ\2\nm\0\0\4\0\4\0\b5\0\0\0006\1\1\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\20symbols-outline\frequire\1\0\2\16show_guides\2\27highlight_hovered_item\2\0", "config", "symbols-outline.nvim")
+try_loadstring("\27LJ\2\nm\0\0\4\0\4\0\b5\0\0\0006\1\1\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\20symbols-outline\frequire\1\0\2\27highlight_hovered_item\2\16show_guides\2\0", "config", "symbols-outline.nvim")
 time([[Config for symbols-outline.nvim]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FocusSplitCycle lua require("packer.load")({'focus.nvim'}, { cmd = "FocusSplitCycle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FocusSplitNicely lua require("packer.load")({'focus.nvim'}, { cmd = "FocusSplitNicely", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-time([[Defining lazy-load commands]], false)
-
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+try_loadstring("\27LJ\2\n�\2\0\0\2\0\v\0\0216\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0006\0\0\0009\0\1\0'\1\a\0=\1\6\0006\0\0\0009\0\1\0'\1\t\0=\1\b\0006\0\0\0009\0\1\0)\1\0\0=\1\n\0K\0\1\0&UltiSnipsRemoveSelectModeMappings\15<c-x><c-s>\26UltiSnipsListSnippets$<Plug>(ultisnips_jump_backward)!UltiSnipsJumpBackwardTrigger#<Plug>(ultisnips_jump_forward) UltiSnipsJumpForwardTrigger\29<Plug>(ultisnips_expand)\27UltiSnipsExpandTrigger\6g\bvim\0", "config", "ultisnips")
+time([[Config for ultisnips]], false)
+-- Config for: telescope-frecency.nvim
+time([[Config for telescope-frecency.nvim]], true)
+try_loadstring("\27LJ\2\nM\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\rfrecency\19load_extension\14telescope\frequire\0", "config", "telescope-frecency.nvim")
+time([[Config for telescope-frecency.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'persistence.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 

@@ -119,10 +119,10 @@ cmp.setup({
 	sources = {
 		{ name = "luasnip" },
 		{ name = "ultisnips" }, -- For ultisnips users.{}
-		{ name = "nvim_lua", max_item_count = 5 },
-		{ name = "nvim_lsp", max_item_count = 5 },
-		{ name = "buffer", keyword_length = 5 },
-		{ name = "path", keyword_length = 5 },
+		{ name = "nvim_lua", max_item_count = 10 },
+		{ name = "nvim_lsp", max_item_count = 12 },
+		{ name = "buffer", keyword_length = 2, max_item_count = 3 },
+		{ name = "path", keyword_length = 2, max_item_count = 3 },
 	},
 })
 require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { path = "./my-snippets/"} as well

@@ -21,73 +21,18 @@ cmp.setup({
 		format = lspkind.cmp_format(),
 	},
 	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+		["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		-- ["<Tab>"] = cmp.mapping({
-		-- 	c = function()
-		-- 		if cmp.visible() then
-		-- 			cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		else
-		-- 			cmp.complete()
-		-- 		end
-		-- 	end,
-		-- 	i = function(fallback)
-		-- 		if cmp.visible() then
-		-- 			cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-		-- 			vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-		-- 		else
-		-- 			fallback()
-		-- 		end
-		-- 	end,
-		-- 	s = function(fallback)
-		-- 		if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-		-- 			vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		else
-		-- 			fallback()
-		-- 		end
-		-- 	end,
-		-- }),
-		-- ["<S-Tab>"] = cmp.mapping({
-		-- 	c = function()
-		-- 		if cmp.visible() then
-		-- 			cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		else
-		-- 			cmp.complete()
-		-- 		end
-		-- 	end,
-		-- 	i = function(fallback)
-		-- 		if cmp.visible() then
-		-- 			cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-		-- 			return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
-		-- 		else
-		-- 			fallback()
-		-- 		end
-		-- 	end,
-		-- 	s = function(fallback)
-		-- 		if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-		-- 			return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
-		-- 		elseif luasnip.expand_or_jumpable() then
-		-- 			luasnip.expand_or_jump()
-		-- 		else
-		-- 			fallback()
-		-- 		end
-		-- 	end,
-		-- }), --
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

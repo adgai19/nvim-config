@@ -49,7 +49,17 @@ require("telescope").setup({
 		--     url_open_plugin = nil,
 		--     firefox_profile_name = nil
 		-- },
-
+		file_browser = {
+			theme = "ivy",
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+				},
+				["n"] = {
+					-- your custom normal mode mappings
+				},
+			},
+		},
 		fzy_native = {
 			override_generic_sorter = true,
 			override_file_sorter = true,
@@ -76,35 +86,13 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
+		},
 	},
 })
 require("telescope").load_extension("fzf")
--- require('telescope').load_extension("arecibo")
--- require('telescope').load_extension('bookmarks')
--- require('telescope').load_extension('media_files')
 require("telescope").load_extension("frecency")
-require("telescope").load_extension("packer")
--- require'telescope'.load_extension("cheat")
+require("telescope").load_extension("ui-select")
 require("telescope").load_extension("project")
--- require'telescope'.load_extension('zoxide')
--- require('telescope').load_extension('dap')
--- require('telescope').load_extension('tmux')
--- require('dap-python').setup('~/anaconda3/bin/python')
--- require('telescope').load_extension('smart_history')
-M.search_dotfiles = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< VimRC >",
-		cwd = "~/.config/nvim/",
-		file_ignore_patterns = { "autoload/" },
-	})
-end
-
-M.find_word = function()
-	local word = vim.fn.input("enter word to search > ")
-	require("telescope.builtin").grep_string(require("telescope.themes").get_ivy({ search = word }))
-end
-M.file_browser = function()
-	require("telescope.builtin").file_browser(require("telescope.themes").get_dropdown({ previewer = false }))
-end
-
-return M
+require("telescope").load_extension("file_browser")

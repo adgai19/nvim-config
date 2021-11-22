@@ -1,9 +1,9 @@
--- require('impatient')
+require("impatient")
 require("general")
--- require'impatient'.enable_profile()
+require("impatient").enable_profile()
 require("autocmds")
 require("packages")
-require("lsp")
+require("adgai.lsp")
 require("plugins")
 require("packer").init()
 vim.cmd([[

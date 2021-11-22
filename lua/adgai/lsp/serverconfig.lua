@@ -1,7 +1,5 @@
 local lspconfig = require("lspconfig")
---gopls setup
 lspconfig.gopls.setup({})
---latex setup
 lspconfig.texlab.setup({
 	cmd = { "texlab" },
 	filetypes = { "tex", "bib" },
@@ -25,10 +23,7 @@ lspconfig.texlab.setup({
 		},
 	},
 })
---vim ls
 lspconfig.vimls.setup({})
-
---c/cpp
 lspconfig.ccls.setup({})
 lspconfig.clangd.setup({})
 
@@ -60,10 +55,9 @@ lspconfig.cssls.setup({ capabilities = capabilities })
 
 lspconfig.html.setup({ capabilities = capabilities })
 
-local on_attach = require("lsp").on_attach
+local on_attach = require("adgai.lsp.on_attach").on_attach
 
 -- TSServer Setup
-print("tsserver")
 lspconfig.tsserver.setup({
 	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
 	-- settings = { documentFormatting = false },
@@ -110,7 +104,7 @@ table.insert(library, "/usr/share/awesome/lib")
 local opts = {
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-	on_attach = require("lsp").on_attach,
+	on_attach = require("adgai.lsp.on_attach").on_attach,
 	settings = {
 		Lua = {
 			runtime = {

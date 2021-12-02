@@ -52,16 +52,65 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 lspconfig.cssls.setup({ capabilities = capabilities })
+lspconfig.jedi_language_server.setup({ capabilities = capabilities })
 
 lspconfig.html.setup({ capabilities = capabilities })
 
 local on_attach = require("adgai.lsp.on_attach").on_attach
 
--- TSServer Setup
 lspconfig.tsserver.setup({
 	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
 	-- settings = { documentFormatting = false },
-	on_attach = on_attach,
+	--
+	init_options = require("nvim-lsp-ts-utils").init_options,
+	on_attach = function(clients, bufnr)
+		-- code
+		--
+
+		local ts_utils = require("nvim-lsp-ts-utils")
+
+		-- defaults
+		ts_utils.setup({
+			debug = false,
+			disable_commands = false,
+			enable_import_on_completion = false,
+
+			-- import all
+			import_all_timeout = 5000, -- ms
+			-- lower numbers = higher priority
+			import_all_priorities = {
+				same_file = 1, -- add to existing import statement
+				local_files = 2, -- git files or files with relative path markers
+				buffer_content = 3, -- loaded buffer content
+				buffers = 4, -- loaded buffer names
+			},
+			import_all_scan_buffers = 100,
+			import_all_select_source = false,
+
+			-- filter diagnostics
+			filter_out_diagnostics_by_severity = {},
+			filter_out_diagnostics_by_code = {},
+
+			-- inlay hints
+			auto_inlay_hints = true,
+			inlay_hints_highlight = "Comment",
+
+			-- update imports on file move
+			update_imports_on_move = false,
+			require_confirmation_on_move = false,
+			watch_dir = nil,
+		})
+
+		-- required to fix code action ranges and filter diagnostics
+		ts_utils.setup_client(clients)
+
+		-- no default maps, so you may want to define some here
+		local opts = { silent = true }
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+		on_attach(clients, bufnr)
+	end,
 })
 
 -- efm server will take care of this later
@@ -85,12 +134,8 @@ lspconfig.tsserver.setup({
 --   -- settings = { languages = languages, log_level = 1, log_file = '~/efm.log' },
 -- }--
 --
--- lua lsp
---
 local system_name = "Linux"
 
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
--- require("compe-setup")
 --
 local sumneko_root_path = "/home/adgai/github/lua-language-server/"
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
@@ -108,22 +153,69 @@ local opts = {
 	settings = {
 		Lua = {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
-				-- Setup your lua path
 				path = runtime_path,
 			},
 			diagnostics = {
-				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
 			workspace = {
-				-- Make the server aware of Neovim runtime files
 				library = library,
 			},
-			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = { enable = false },
 		},
 	},
 }
 require("lspconfig").sumneko_lua.setup(opts)
+lspconfig.jsonls.setup({
+	cmd = { "vscode-json-language-server", "--stdio" },
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "json", "jsonc" },
+	settings = {
+		json = {
+			schemas = {
+				{
+					fileMatch = { "package.json" },
+					url = "https://json.schemastore.org/package.json",
+				},
+				{
+					fileMatch = { "tsconfig*.json" },
+					url = "https://json.schemastore.org/tsconfig.json",
+				},
+				{
+					fileMatch = {
+						".prettierrc",
+						".prettierrc.json",
+						"prettier.config.json",
+					},
+					url = "https://json.schemastore.org/prettierrc.json",
+				},
+				{
+					fileMatch = { ".eslintrc", ".eslintrc.json" },
+					url = "https://json.schemastore.org/eslintrc.json",
+				},
+				{
+					fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
+					url = "https://json.schemastore.org/babelrc.json",
+				},
+				{
+					fileMatch = { "lerna.json" },
+					url = "https://json.schemastore.org/lerna.json",
+				},
+				{
+					fileMatch = { "now.json", "vercel.json" },
+					url = "https://json.schemastore.org/now.json",
+				},
+				{
+					fileMatch = {
+						".stylelintrc",
+						".stylelintrc.json",
+						"stylelint.config.json",
+					},
+					url = "http://json.schemastore.org/stylelintrc.json",
+				},
+			},
+		},
+	},
+})

@@ -90,11 +90,13 @@ hi Normal guibg=NONE ctermbg=NONE
 
 	--lsp
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-fzy" })
 	use("kshenoy/vim-signature")
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
+	use("simrat39/rust-tools.nvim")
 	use({
 		"simrat39/symbols-outline.nvim",
 		config = function()
@@ -157,4 +159,5 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("jeffkreeftmeijer/vim-numbertoggle")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("nacro90/numb.nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
 end)

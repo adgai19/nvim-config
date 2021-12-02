@@ -46,7 +46,7 @@ vim.opt.showtabline = 0
 vim.opt.compatible = false
 vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 vim.g[":tmux_navigator_save_on_switch"] = 2
-vim.cmd([[autocmd FileType markdown vim.opt.spell]])
+-- vim.cmd([[autocmd FileType markdown vim.opt.spell]])
 
 -- vim.opt.number=true
 

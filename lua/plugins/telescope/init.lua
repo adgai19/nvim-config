@@ -13,7 +13,7 @@ M.find_word = function()
 	require("telescope.builtin").grep_string(require("telescope.themes").get_ivy({ search = word }))
 end
 M.file_browser = function()
-	require("telescope.builtin").file_browser(require("telescope.themes").get_dropdown({ previewer = false }))
+	require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({ previewer = false }))
 end
 
 local conf = require("telescope.config").values

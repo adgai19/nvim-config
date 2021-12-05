@@ -47,7 +47,7 @@ return packer.startup(function()
 	})
 	use("nvim-telescope/telescope-dap.nvim")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
+	-- use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- folke stuff
 	use({
@@ -160,4 +160,22 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("nacro90/numb.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
+	use({
+		"weilbith/nvim-code-action-menu",
+		config = function()
+			require("tools.utils").nnoremap(
+				"<leader>ct",
+				"<esc>:lua require('code_action_menu').open_code_action_menu()<cr>"
+			)
+		end,
+	})
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 end)

@@ -9,7 +9,6 @@ return packer.startup(function()
 	use("lewis6991/impatient.nvim")
 	use({
 		"wbthomason/packer.nvim",
-		event = "VimEnter",
 	})
 
 	-- tmux helpers
@@ -26,8 +25,10 @@ return packer.startup(function()
 	-- completion
 	use({ "rafamadriz/friendly-snippets" })
 	use({ "hrsh7th/nvim-cmp" })
+	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
+	use("hrsh7th/cmp-cmdline")
 	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
@@ -35,7 +36,7 @@ return packer.startup(function()
 	use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
 	use("onsails/lspkind-nvim")
 	use("glepnir/lspsaga.nvim")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
+	-- use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -90,7 +91,7 @@ hi Normal guibg=NONE ctermbg=NONE
 
 	--lsp
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
+	-- use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-fzy" })
 	use("kshenoy/vim-signature")
@@ -160,15 +161,16 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("nacro90/numb.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
-	use({
-		"weilbith/nvim-code-action-menu",
-		config = function()
-			require("tools.utils").nnoremap(
-				"<leader>ct",
-				"<esc>:lua require('code_action_menu').open_code_action_menu()<cr>"
-			)
-		end,
-	})
+	use({ "norcalli/nvim-colorizer.lua", config = require("colorizer").setup() })
+	-- use({
+	-- 	"weilbith/nvim-code-action-menu",
+	-- 	config = function()
+	-- 		require("tools.utils").nnoremap(
+	-- 			"<leader>ct",
+	-- 			"<esc>:lua require('code_action_menu').open_code_action_menu()<cr>"
+	-- 		)
+	-- 	end,
+	-- })
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {

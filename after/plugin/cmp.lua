@@ -62,8 +62,10 @@ cmp.setup({
 		}),
 	},
 	sources = {
-		{ name = "luasnip" },
-		{ name = "ultisnips" }, -- For ultisnips users.{}
+		{ name = "luasnip", max_item_count = 4 },
+		{ name = "ultisnips", max_item_count = 6 }, -- For ultisnips users.{}
+
+		{ name = "cmp_tabnine" },
 		{ name = "nvim_lua", max_item_count = 10 },
 		{ name = "nvim_lsp", max_item_count = 12 },
 		{ name = "buffer", keyword_length = 2, max_item_count = 3 },
@@ -81,3 +83,13 @@ vim.cmd([[
   snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<CR>
   snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
 ]])
+require("cmp").setup.cmdline(":", {
+	sources = {
+		{ name = "cmdline" },
+	},
+})
+require("cmp").setup.cmdline("/", {
+	sources = {
+		{ name = "buffer" },
+	},
+})

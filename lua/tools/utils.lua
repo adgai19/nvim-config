@@ -1,5 +1,4 @@
 local utils = {}
-print("open   file")
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 
 function utils.opt(scope, key, value)

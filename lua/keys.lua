@@ -1,6 +1,4 @@
-print("opened  file")
 local mapper = require("tools.utils")
-print("opened  file")
 mapper.nnoremap("<silent> gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
 mapper.nnoremap("<silent><leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>")
 mapper.nnoremap("<silent> K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")

@@ -90,7 +90,8 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({ "folke/lua-dev.nvim" })
 
 	--lsp
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("folke/nvim-lsp-ts-utils")
 	-- use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-fzy" })
@@ -144,6 +145,10 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({
 		"rcarriga/nvim-notify",
 		config = function()
+			require("notify").setup({
+
+				background_colour = "#000000",
+			})
 			vim.notify = require("notify")
 		end,
 	})
@@ -155,7 +160,10 @@ hi Normal guibg=NONE ctermbg=NONE
 	})
 	use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
-	use({ "mattn/emmet-vim", ft = "html" })
+	use({
+		"mattn/emmet-vim",
+		ft = { "html" },
+	})
 	use({ "tjdevries/cyclist.vim" })
 	use("jeffkreeftmeijer/vim-numbertoggle")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -171,6 +179,8 @@ hi Normal guibg=NONE ctermbg=NONE
 	-- 		)
 	-- 	end,
 	-- })
+	-- use {'stevearc/dressing.nvim'}
+	use({ "potatoesmaster/i3-vim-syntax" })
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {

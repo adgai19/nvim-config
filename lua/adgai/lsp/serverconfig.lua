@@ -102,7 +102,7 @@ lspconfig.tsserver.setup({
 		})
 
 		-- required to fix code action ranges and filter diagnostics
-		ts_utils.setup_client(clients)
+		-- ts_utils.setup_client(clients)
 
 		-- no default maps, so you may want to define some here
 		local opts = { silent = true }
@@ -113,27 +113,30 @@ lspconfig.tsserver.setup({
 	end,
 })
 
--- efm server will take care of this later
--- local languages = {
--- 	typescript = { prettier, eslint },
--- 	javascript = { prettier, eslint },
--- 	typescriptreact = { prettier, eslint },
--- 	javascriptreact = { prettier, eslint },
--- 	yaml = { prettier },
--- 	json = { prettier },
--- 	html = { prettier },
--- 	scss = { prettier },
--- 	css = { prettier },
--- 	markdown = { prettier },
--- }
+local eslint = {
+	lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+	lintStdin = true,
+	lintFormats = { "%f:%l:%c: %m" },
+	lintIgnoreExitCode = true,
+	formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+	formatStdin = true,
+}
+local util = require("lspconfig").util
 
--- lspconfig.efm.setup {
---   root_dir = lspconfig.util.root_pattern("yarn.lock", "lerna.json", ".git"),
---   -- filestypes = vim.tbl_keys(languages),
---   -- init_options = { documentFormatting = true, codeAction = true },
---   -- settings = { languages = languages, log_level = 1, log_file = '~/efm.log' },
--- }--
---
+require("lspconfig").efm.setup({
+	init_options = { documentFormatting = true },
+	filetypes = { "javascript", "typescript" },
+	root_dir = function(fname)
+		return util.root_pattern("tsconfig.json")(fname) or util.root_pattern(".eslintrc.js", ".git")(fname)
+	end,
+	settings = {
+		rootMarkers = { ".eslintrc.js", ".git/" },
+		languages = {
+			javascript = { eslint },
+			typescript = { eslint },
+		},
+	},
+})
 local system_name = "Linux"
 
 --

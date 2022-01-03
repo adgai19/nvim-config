@@ -92,10 +92,11 @@ hi Normal guibg=NONE ctermbg=NONE
 	--lsp
 	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("folke/nvim-lsp-ts-utils")
-	-- use({ "ray-x/lsp_signature.nvim", config = require("lsp_signature").setup() })
+	use({ "ray-x/lsp_signature.nvim" })
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-fzy" })
 	use("kshenoy/vim-signature")
+	use({ "tjdevries/nlua.nvim", config = function() end })
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
@@ -160,10 +161,6 @@ hi Normal guibg=NONE ctermbg=NONE
 	})
 	use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
-	use({
-		"mattn/emmet-vim",
-		ft = { "html" },
-	})
 	use({ "tjdevries/cyclist.vim" })
 	use("jeffkreeftmeijer/vim-numbertoggle")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -190,4 +187,5 @@ hi Normal guibg=NONE ctermbg=NONE
 			require("gitsigns").setup()
 		end,
 	})
+	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
 end)

@@ -1,6 +1,7 @@
 local on_attach = function(client, bufnr)
 	local resolved_capabilities = client.resolved_capabilities
 
+	require("lsp_signature").on_attach() -- Note: add in lsp client on-attach
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)

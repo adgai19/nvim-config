@@ -51,6 +51,7 @@ return packer.startup(function()
 	-- use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- folke stuff
+	-- cool guy with cool plugins
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -58,7 +59,6 @@ return packer.startup(function()
 			require("todo-comments").setup({})
 		end,
 	})
-
 	use("folke/lsp-colors.nvim")
 	use({
 		"folke/which-key.nvim",
@@ -91,10 +91,11 @@ hi Normal guibg=NONE ctermbg=NONE
 
 	--lsp
 	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	-- folke's fork works better
 	use("folke/nvim-lsp-ts-utils")
 	use({ "ray-x/lsp_signature.nvim" })
 	use("neovim/nvim-lspconfig")
-	use({ "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-fzy" })
+	use({ "mfussenegger/nvim-jdtls" })
 	use("kshenoy/vim-signature")
 	use({ "tjdevries/nlua.nvim", config = function() end })
 	use("RishabhRD/popfix")

@@ -60,8 +60,15 @@ return packer.startup(function()
 		end,
 	})
 	use("folke/lsp-colors.nvim")
+	-- use({
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		require("which-key").setup({})
+	-- 	end,
+	-- })
 	use({
-		"folke/which-key.nvim",
+		"zeertzjq/which-key.nvim",
+		branch = "patch-1",
 		config = function()
 			require("which-key").setup({})
 		end,
@@ -79,13 +86,14 @@ hi Normal guibg=NONE ctermbg=NONE
 ]])
 		end,
 	})
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
+	-- not working till some plenary stuff works itself out
+	-- use({
+	-- 	"folke/trouble.nvim",
+	-- 	requires = "kyazdani42/nvim-web-devicons",
+	-- 	config = function()
+	-- 		require("trouble").setup({})
+	-- 	end,
+	-- })
 	use("folke/lsp-trouble.nvim")
 	use({ "folke/lua-dev.nvim" })
 
@@ -101,23 +109,29 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
-	use({
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			local opts = {
-				highlight_hovered_item = true,
-				show_guides = true,
-			}
-			require("symbols-outline").setup(opts)
-		end,
-	})
+	-- use({
+	-- "simrat39/symbols-outline.nvim",
+	-- config = function()
+	-- 	local opts = {
+	-- 		highlight_hovered_item = true,
+	-- 		show_guides = true,
+	-- 	}
+	-- 	require("symbols-outline").setup(opts)
+	-- end,
+	-- })
 
 	--tpope
 	use("tpope/vim-eunuch")
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-scriptease")
-	use("tpope/vim-commentary")
+	-- use("tpope/vim-commentary")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	--dap
 	--TODO need to set this up
@@ -189,4 +203,30 @@ hi Normal guibg=NONE ctermbg=NONE
 		end,
 	})
 	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
+	-- use("mkitt/tabline.vim")
+	-- use({
+	-- 	"kdheepak/tabline.nvim",
+	-- 	config = function()
+	-- 		require("tabline").setup({
+	-- 			-- Defaults configuration options
+	-- 			enable = true,
+	-- 			options = {
+	-- 				-- If lualine is installed tabline will use separators configured in lualine by default.
+	-- 				-- These options can be used to override those settings.
+	-- 				section_separators = { "", "" },
+	-- 				component_separators = { "", "" },
+	-- 				max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+	-- 				show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+	-- 				show_devicons = true, -- this shows devicons in buffer section
+	-- 				show_bufnr = false, -- this appends [bufnr] to buffer section,
+	-- 				show_filename_only = false, -- shows base filename only instead of relative path in filename
+	-- 			},
+	-- 		})
+	-- 		vim.cmd([[
+	--      set guioptions-=e " Use showtabline in gui vim
+	--      set sessionoptions+=tabpages,globals " store tabpages and globals in session
+	--    ]])
+	-- 	end,
+	-- 	requires = { { "hoob3rt/lualine.nvim", opt = true }, { "kyazdani42/nvim-web-devicons", opt = true } },
+	-- })
 end)

@@ -3,6 +3,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 -- Setup nvim-cmp.
+--
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
@@ -17,9 +18,11 @@ cmp.setup({
 			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
-	formatting = {
-		format = lspkind.cmp_format(),
-	},
+	formatting = { format = lspkind.cmp_format({
+		with_text = true,
+
+		preset = "codicons",
+	}) },
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),

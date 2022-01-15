@@ -65,6 +65,15 @@ local config = {
 		lualine_c = {},
 		lualine_x = {},
 	},
+
+	tabline = {
+		lualine_a = { "branch" },
+		lualine_b = { "buffers" },
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {},
+	},
 }
 
 -- Inserts a component in lualine_c at left section

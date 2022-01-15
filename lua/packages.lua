@@ -52,27 +52,27 @@ return packer.startup(function()
 
 	-- folke stuff
 	-- cool guy with cool plugins
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup({})
-		end,
-	})
-	use("folke/lsp-colors.nvim")
 	-- use({
-	-- 	"folke/which-key.nvim",
+	-- 	"folke/todo-comments.nvim",
+	-- 	requires = "nvim-lua/plenary.nvim",
 	-- 	config = function()
-	-- 		require("which-key").setup({})
+	-- 		require("todo-comments").setup({})
 	-- 	end,
 	-- })
+	use("folke/lsp-colors.nvim")
 	use({
-		"zeertzjq/which-key.nvim",
-		branch = "patch-1",
+		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup({})
 		end,
 	})
+	-- use({
+	-- 	"zeertzjq/which-key.nvim",
+	-- 	branch = "patch-1",
+	-- 	config = function()
+	-- 		require("which-key").setup({})
+	-- 	end,
+	-- })
 	use({
 		"folke/tokyonight.nvim",
 		config = function()
@@ -109,16 +109,18 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
-	-- use({
-	-- "simrat39/symbols-outline.nvim",
-	-- config = function()
-	-- 	local opts = {
-	-- 		highlight_hovered_item = true,
-	-- 		show_guides = true,
-	-- 	}
-	-- 	require("symbols-outline").setup(opts)
-	-- end,
-	-- })
+	use({
+		-- "simrat39/symbols-outline.nvim",
+		"zeertzjq/symbols-outline.nvim",
+		branch = "patch-1",
+		config = function()
+			local opts = {
+				highlight_hovered_item = true,
+				show_guides = true,
+			}
+			require("symbols-outline").setup(opts)
+		end,
+	})
 
 	--tpope
 	use("tpope/vim-eunuch")

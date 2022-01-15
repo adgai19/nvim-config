@@ -8,6 +8,10 @@ M.search_dotfiles = function()
 	})
 end
 
+M.find_word_under_cursor = function()
+	local word = vim.call("expand", "<cword>")
+	require("telescope.builtin").grep_string(require("telescope.themes").get_ivy({ search = word }))
+end
 M.find_word = function()
 	local word = vim.fn.input("enter word to search > ")
 	require("telescope.builtin").grep_string(require("telescope.themes").get_ivy({ search = word }))

@@ -1,7 +1,7 @@
 -- vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('lsp.code_action_utils').code_action_listener()]])
 
 local function buf_set_keymap(...)
-	vim.api.nvim_buf_set_keymap(bufnr, ...)
+	vim.api.nvim_buf_set_keymap(0, ...)
 end
 
 -- Mappings.

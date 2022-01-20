@@ -60,12 +60,12 @@ return packer.startup(function()
 	-- 	end,
 	-- })
 	use("folke/lsp-colors.nvim")
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({})
-		end,
-	})
+	-- use({
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		require("which-key").setup({})
+	-- 	end,
+	-- })
 	-- use({
 	-- 	"zeertzjq/which-key.nvim",
 	-- 	branch = "patch-1",

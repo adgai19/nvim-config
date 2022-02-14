@@ -2,5 +2,20 @@ local function nnoremap(lhs, rhs)
 	vim.keymap.set("n", lhs, rhs)
 	-- code
 end
-nnoremap("ff", require("telescope.builtin").find_files)
--- vim.keymaps.set("n", "ff", require("telescope").find_files)
+nnoremap("<leader>ff", require("telescope.builtin").find_files)
+nnoremap("<leader>fg", require("telescope.builtin").live_grep)
+nnoremap("<leader>fb", require("telescope.builtin").buffers)
+nnoremap("<leader>fh", require("telescope.builtin").help_tags)
+nnoremap("<leader>fgi", require("telescope.builtin").git_files)
+nnoremap(
+	"<leader>gb",
+	[[require("telescope.builtin").git_branches(require("telescope.themes").get_dropdown({ previewer = false }))<CR>]]
+)
+
+nnoremap("<leader>fc", require("plugins.telescope").search_dotfiles)
+nnoremap("<leader>fw", require("plugins.telescope").find_word)
+nnoremap("<leader>fww", require("plugins.telescope").find_word_under_cursor)
+nnoremap("<leader>fwb", require("telescope.builtin").current_buffer_fuzzy_find)
+nnoremap("<leader>fr", require("plugins.telescope").multi_rg)
+nnoremap("<leader>fa", "cmd>Telescope frecency<cr>")
+nnoremap("<leader>fk", require("telescope.builtin").keymaps)

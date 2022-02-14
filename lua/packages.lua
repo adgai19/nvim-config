@@ -21,6 +21,7 @@ return packer.startup(function()
 	use("nvim-lua/popup.nvim")
 	-- use("haringsrob/nvim_context_vt")
 	use("https://github.com/airblade/vim-rooter")
+	use("nyngwang/NeoRoot.lua")
 
 	-- completion
 	use({ "rafamadriz/friendly-snippets" })
@@ -34,7 +35,7 @@ return packer.startup(function()
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 	use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
-	use("onsails/lspkind-nvim")
+	-- use("onsails/lspkind-nvim")
 	use("glepnir/lspsaga.nvim")
 	-- use("hrsh7th/cmp-nvim-lsp-signature-help")
 
@@ -52,20 +53,20 @@ return packer.startup(function()
 
 	-- folke stuff
 	-- cool guy with cool plugins
-	-- use({
-	-- 	"folke/todo-comments.nvim",
-	-- 	requires = "nvim-lua/plenary.nvim",
-	-- 	config = function()
-	-- 		require("todo-comments").setup({})
-	-- 	end,
-	-- })
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup({})
+		end,
+	})
 	use("folke/lsp-colors.nvim")
-	-- use({
-	-- 	"folke/which-key.nvim",
-	-- 	config = function()
-	-- 		require("which-key").setup({})
-	-- 	end,
-	-- })
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
 	-- use({
 	-- 	"zeertzjq/which-key.nvim",
 	-- 	branch = "patch-1",
@@ -87,13 +88,13 @@ hi Normal guibg=NONE ctermbg=NONE
 		end,
 	})
 	-- not working till some plenary stuff works itself out
-	-- use({
-	-- 	"folke/trouble.nvim",
-	-- 	requires = "kyazdani42/nvim-web-devicons",
-	-- 	config = function()
-	-- 		require("trouble").setup({})
-	-- 	end,
-	-- })
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({})
+		end,
+	})
 	use("folke/lsp-trouble.nvim")
 	use({ "folke/lua-dev.nvim" })
 
@@ -105,7 +106,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls" })
 	use("kshenoy/vim-signature")
-	use({ "tjdevries/nlua.nvim", config = function() end })
+	-- use({ "tjdevries/nlua.nvim", config = function() end })
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
@@ -127,7 +128,6 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-scriptease")
-	-- use("tpope/vim-commentary")
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -205,6 +205,10 @@ hi Normal guibg=NONE ctermbg=NONE
 		end,
 	})
 	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
+	use("j-hui/fidget.nvim")
+
+	use("jremmen/vim-ripgrep")
+	use("windwp/nvim-spectre")
 	-- use("mkitt/tabline.vim")
 	-- use({
 	-- 	"kdheepak/tabline.nvim",

@@ -5,24 +5,61 @@ end
 -- Setup nvim-cmp.
 --
 local cmp = require("cmp")
-local lspkind = require("lspkind")
-local luasnip = require("luasnip")
+-- local lspkind = require("lspkind")
+-- local luasnip = require("luasnip")
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "ﴯ",
+	Interface = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			-- vim.fn["vsnip#anonymous"](args.body)
-			require("luasnip").lsp_expand(args.body)
+			-- require("luasnip").lsp_expand(args.body)
 			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
-	formatting = { format = lspkind.cmp_format({
-		with_text = true,
-
-		preset = "codicons",
-	}) },
+	formatting = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- Source
+			vim_item.menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[Lua]",
+				latex_symbols = "[LaTeX]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -39,8 +76,8 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+				-- elseif luasnip.expand_or_jumpable() then
+				-- 	luasnip.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -54,8 +91,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
+				-- elseif luasnip.jumpable(-1) then
+				-- 	luasnip.jump(-1)
 			else
 				fallback()
 			end
@@ -65,7 +102,7 @@ cmp.setup({
 		}),
 	},
 	sources = {
-		{ name = "luasnip", max_item_count = 4 },
+		-- { name = "luasnip", max_item_count = 4 },
 		{ name = "ultisnips", max_item_count = 6 }, -- For ultisnips users.{}
 
 		{ name = "cmp_tabnine" },
@@ -75,17 +112,17 @@ cmp.setup({
 		{ name = "path", keyword_length = 2, max_item_count = 3 },
 	},
 })
-require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { path = "./my-snippets/"} as well
+-- require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { path = "./my-snippets/"} as well
 
-vim.cmd([[
-  imap <silent><expr> <c-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-k>'
-  inoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
-
-  imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
-
-  snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<CR>
-  snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
-]])
+-- vim.cmd([[
+--   imap <silent><expr> <c-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-k>'
+--   inoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
+--
+--   imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
+--
+--   snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<CR>
+--   snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<CR>
+-- ]])
 require("cmp").setup.cmdline(":", {
 	sources = {
 		{ name = "cmdline" },

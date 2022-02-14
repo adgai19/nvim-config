@@ -62,3 +62,4 @@ nnoremap <leader>m :Mkdir
 vnoremap < <gv
 vnoremap > >gv
 nnoremap <space>ca <esc>:lua require('code_action_menu').open_code_action_menu()<cr>
+nnoremap \ :Rg<space>

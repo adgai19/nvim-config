@@ -1,5 +1,7 @@
 local lspconfig = require("lspconfig")
+
 lspconfig.gopls.setup({})
+
 lspconfig.texlab.setup({
 	cmd = { "texlab" },
 	filetypes = { "tex", "bib" },
@@ -23,12 +25,14 @@ lspconfig.texlab.setup({
 		},
 	},
 })
+
 lspconfig.vimls.setup({})
+
 lspconfig.ccls.setup({})
+
 lspconfig.clangd.setup({})
 
 local configs = require("lspconfig/configs")
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -44,6 +48,7 @@ if not lspconfig.emmet_ls then
 		},
 	}
 end
+
 lspconfig.emmet_ls.setup({ capabilities = capabilities })
 
 lspconfig.eslint.setup({})
@@ -51,12 +56,18 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 lspconfig.cssls.setup({ capabilities = capabilities })
+
 lspconfig.jedi_language_server.setup({ capabilities = capabilities })
 
 lspconfig.html.setup({ capabilities = capabilities })
 
 local on_attach = require("adgai.lsp.on_attach").on_attach
+
+lspconfig.dockerls.setup({ on_attach = on_attach })
+
+lspconfig.ansiblels.setup({ on_attach = on_attach })
 
 lspconfig.tsserver.setup({
 	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
@@ -123,7 +134,7 @@ local eslint = {
 }
 local util = require("lspconfig").util
 
-require("lspconfig").efm.setup({
+lspconfig.efm.setup({
 	init_options = { documentFormatting = true },
 	filetypes = { "javascript", "typescript" },
 	root_dir = function(fname)
@@ -139,7 +150,8 @@ require("lspconfig").efm.setup({
 })
 
 --
-local sumneko_root_path = "/home/adgai/dev/lua"
+local sumneko_root_path = "/home/adgai/dev/lua-language-server"
+
 local sumneko_binary = sumneko_root_path .. "/bin/" .. "/lua-language-server"
 
 local runtime_path = vim.split(package.path, ";")
@@ -169,6 +181,7 @@ local opts = {
 	},
 }
 require("lspconfig").sumneko_lua.setup(opts)
+
 lspconfig.jsonls.setup({
 	cmd = { "vscode-json-language-server", "--stdio" },
 	on_attach = on_attach,
@@ -221,3 +234,4 @@ lspconfig.jsonls.setup({
 		},
 	},
 })
+require("lspconfig").ansiblels.setup({})

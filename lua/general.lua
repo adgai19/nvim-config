@@ -20,7 +20,7 @@ vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.laststatus = 0
+vim.opt.laststatus = 2
 
 vim.opt.showmode = false
 vim.opt.number = true

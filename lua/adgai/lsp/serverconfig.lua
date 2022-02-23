@@ -68,6 +68,7 @@ local on_attach = require("adgai.lsp.on_attach").on_attach
 lspconfig.dockerls.setup({ on_attach = on_attach })
 
 lspconfig.ansiblels.setup({ on_attach = on_attach })
+lspconfig.vuels.setup({ on_attach = on_attach, capabilities = capabilities })
 
 lspconfig.tsserver.setup({
 	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),

@@ -1,5 +1,4 @@
 local present, packer = pcall(require, "plugins.packerInit")
-
 if not present then
 	return false
 end
@@ -24,7 +23,7 @@ return packer.startup(function()
 	use("nyngwang/NeoRoot.lua")
 
 	-- completion
-	use({ "rafamadriz/friendly-snippets" })
+	-- use({ "rafamadriz/friendly-snippets" })
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" })
@@ -34,10 +33,10 @@ return packer.startup(function()
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
-	use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
-	-- use("onsails/lspkind-nvim")
-	use("glepnir/lspsaga.nvim")
-	-- use("hrsh7th/cmp-nvim-lsp-signature-help")
+	-- use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
+	use("onsails/lspkind-nvim")
+	-- use("glepnir/lspsaga.nvim")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -67,13 +66,6 @@ return packer.startup(function()
 			require("which-key").setup({})
 		end,
 	})
-	-- use({
-	-- 	"zeertzjq/which-key.nvim",
-	-- 	branch = "patch-1",
-	-- 	config = function()
-	-- 		require("which-key").setup({})
-	-- 	end,
-	-- })
 	use({
 		"folke/tokyonight.nvim",
 		config = function()
@@ -99,8 +91,6 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({ "folke/lua-dev.nvim" })
 
 	--lsp
-	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	-- folke's fork works better
 	use("folke/nvim-lsp-ts-utils")
 	use({ "ray-x/lsp_signature.nvim" })
 	use("neovim/nvim-lspconfig")
@@ -147,13 +137,13 @@ hi Normal guibg=NONE ctermbg=NONE
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
 	use("ThePrimeagen/git-worktree.nvim")
-	use({
-		"ThePrimeagen/refactoring.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	})
+	-- use({
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	requires = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- })
 
 	--other helpers
 	use("junegunn/rainbow_parentheses.vim")
@@ -176,7 +166,7 @@ hi Normal guibg=NONE ctermbg=NONE
 			require("nvim-autopairs").setup({})
 		end,
 	})
-	use("mbbill/undotree")
+	-- use("mbbill/undotree")
 	use("ggandor/lightspeed.nvim")
 	use({ "tjdevries/cyclist.vim" })
 	use("jeffkreeftmeijer/vim-numbertoggle")
@@ -205,34 +195,8 @@ hi Normal guibg=NONE ctermbg=NONE
 		end,
 	})
 	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
-	use("j-hui/fidget.nvim")
+	use({ "j-hui/fidget.nvim", config = require("fidget").setup({}) })
 
 	use("jremmen/vim-ripgrep")
 	use("windwp/nvim-spectre")
-	-- use("mkitt/tabline.vim")
-	-- use({
-	-- 	"kdheepak/tabline.nvim",
-	-- 	config = function()
-	-- 		require("tabline").setup({
-	-- 			-- Defaults configuration options
-	-- 			enable = true,
-	-- 			options = {
-	-- 				-- If lualine is installed tabline will use separators configured in lualine by default.
-	-- 				-- These options can be used to override those settings.
-	-- 				section_separators = { "", "" },
-	-- 				component_separators = { "", "" },
-	-- 				max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
-	-- 				show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
-	-- 				show_devicons = true, -- this shows devicons in buffer section
-	-- 				show_bufnr = false, -- this appends [bufnr] to buffer section,
-	-- 				show_filename_only = false, -- shows base filename only instead of relative path in filename
-	-- 			},
-	-- 		})
-	-- 		vim.cmd([[
-	--      set guioptions-=e " Use showtabline in gui vim
-	--      set sessionoptions+=tabpages,globals " store tabpages and globals in session
-	--    ]])
-	-- 	end,
-	-- 	requires = { { "hoob3rt/lualine.nvim", opt = true }, { "kyazdani42/nvim-web-devicons", opt = true } },
-	-- })
 end)

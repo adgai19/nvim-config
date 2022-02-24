@@ -63,12 +63,12 @@ vim.g[":tmux_navigator_save_on_switch"] = 2
 vim.opt.shell = "/bin/bash"
 vim.g["python3_host_prog"] = "/usr/bin/python3"
 vim.opt.termguicolors = true
+vim.opt.undodir = vim.fn.expand("~") .. "/.config/nvim/undodir/undo"
+vim.opt.undofile = true
+vim.opt.number = true
 
 vim.opt.background = "dark"
 vim.cmd([[
-
-set number
-
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif

@@ -1,7 +1,5 @@
-local function nnoremap(lhs, rhs)
-	vim.keymap.set("n", lhs, rhs)
-	-- code
-end
+local nnoremap = require("keymaps.helpers").nnoremap
+
 nnoremap("<leader>ff", require("telescope.builtin").find_files)
 nnoremap("<leader>fg", require("telescope.builtin").live_grep)
 nnoremap("<leader>fb", require("telescope.builtin").buffers)

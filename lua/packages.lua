@@ -48,7 +48,6 @@ return packer.startup(function()
 	})
 	use("nvim-telescope/telescope-dap.nvim")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	-- use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- folke stuff
 	-- cool guy with cool plugins
@@ -101,9 +100,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
 	use({
-		-- "simrat39/symbols-outline.nvim",
-		"zeertzjq/symbols-outline.nvim",
-		branch = "patch-1",
+		"simrat39/symbols-outline.nvim",
 		config = function()
 			local opts = {
 				highlight_hovered_item = true,
@@ -149,6 +146,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("junegunn/rainbow_parentheses.vim")
 	use("sbdchd/neoformat")
 	use("mhinz/vim-startify")
+	use("mfussenegger/nvim-treehopper")
 	use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 	use({
 		"rcarriga/nvim-notify",
@@ -199,4 +197,10 @@ hi Normal guibg=NONE ctermbg=NONE
 
 	use("jremmen/vim-ripgrep")
 	use("windwp/nvim-spectre")
+	use({
+		"nvim-neorg/neorg",
+		requires = "nvim-lua/plenary.nvim",
+		after = "nvim-treesitter",
+	})
+	use("chrisbra/matchit")
 end)

@@ -1,11 +1,11 @@
 " qf list
-nnoremap <M-e> :cnext<CR>
-nnoremap <M-o> :cprevious<CR>
-nnoremap <M-c> :cclose<CR>
+" nnoremap <M-e> :cnext<CR>
+" nnoremap <M-o> :cprevious<CR>
+" nnoremap <M-c> :cclose<CR>
 
-nnoremap <leader>lk :lnext<CR>
-nnoremap <leader>lo :lprevious<CR>
-nnoremap <leader>lt :lclose<CR>
+" nnoremap <leader>lk :lnext<CR>
+" nnoremap <leader>lo :lprevious<CR>
+" nnoremap <leader>lt :lclose<CR>
 
 " nnoremap <F5> :make<CR>
 " nnoremap <F4> :make -C build<CR>
@@ -28,6 +28,6 @@ nnoremap <leader>lt :lclose<CR>
 "
 " nnoremap <leader>wz :MaximizerToggle<CR>
 "
-vnoremap J :m '>+1<CR>gv=gv
-"
-vnoremap K :m '<-2<CR>gv=gv
+" vnoremap J :m '>+1<CR>gv=gv
+" "
+" vnoremap K :m '<-2<CR>gv=gv

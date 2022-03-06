@@ -1,30 +1,29 @@
 local nnoremap = require("keymaps.helpers").nnoremap
-vim.notify("in cyclekeymaps")
 
 local M = {}
 M.mode = "normal"
+M.setMode = function(mode)
+	M.mode = mode
+end
 M.change_mode = function()
-	print("in change_mode")
-
 	if M.mode == "normal" then
-		print("in normal")
-
 		nnoremap("n", "<cmd>cnext<cr>")
 		nnoremap("e", "<cmd>cprev<cr>")
-		print("current mode", M.mode)
 		M.mode = "qf"
+
+		print("current mode", M.mode)
 	elseif M.mode == "qf" then
 		nnoremap("n", "j")
-		--
-
-		print("in qf")
 		nnoremap("e", "k")
-
-		print("current mode", M.mode)
+		M.mode = "normal"
+		-- M.mode = "ll"
+		--
+	elseif M.mode == "ll" then
+		nnoremap("n", "<cmd>nnext<cr>")
+		nnoremap("e", "<cmd>nprev<cr>")
 		M.mode = "normal"
 	end
-
-	vim.notify("current mode", M.mode)
 end
 
 nnoremap("<C-b>", M.change_mode)
+return M

@@ -203,4 +203,5 @@ hi Normal guibg=NONE ctermbg=NONE
 		after = "nvim-treesitter",
 	})
 	use("chrisbra/matchit")
+	use("romainl/vim-qf")
 end)

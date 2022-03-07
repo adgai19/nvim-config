@@ -172,15 +172,9 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("nacro90/numb.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use({ "norcalli/nvim-colorizer.lua", config = require("colorizer").setup() })
-	-- use({
-	-- 	"weilbith/nvim-code-action-menu",
-	-- 	config = function()
-	-- 		require("tools.utils").nnoremap(
-	-- 			"<leader>ct",
-	-- 			"<esc>:lua require('code_action_menu').open_code_action_menu()<cr>"
-	-- 		)
-	-- 	end,
-	-- })
+	use({
+		"weilbith/nvim-code-action-menu",
+	})
 	-- use {'stevearc/dressing.nvim'}
 	use({ "potatoesmaster/i3-vim-syntax" })
 	use({

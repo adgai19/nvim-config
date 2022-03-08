@@ -1,8 +1,9 @@
-local present, packer = pcall(require, "plugins.packerInit")
-if not present then
-	return false
-end
+-- local present, packer = pcall(require, "plugins.packerInit")
+-- if not present then
+-- 	return false
+-- end
 
+local packer = require("packer")
 local use = packer.use
 return packer.startup(function()
 	use("lewis6991/impatient.nvim")
@@ -187,7 +188,7 @@ hi Normal guibg=NONE ctermbg=NONE
 		end,
 	})
 	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
-	use({ "j-hui/fidget.nvim", config = require("fidget").setup({}) })
+	use({ "j-hui/fidget.nvim" })
 
 	use("jremmen/vim-ripgrep")
 	use("windwp/nvim-spectre")

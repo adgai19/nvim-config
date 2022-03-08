@@ -1,4 +1,4 @@
-source $HOME/.config/nvim/keys/telescope.vim
+" source $HOME/.config/nvim/keys/telescope.vim
 source $HOME/.config/nvim/keys/vim-fugutive.vim
 source $HOME/.config/nvim/keys/harpoon.vim
 source $HOME/.config/nvim/keys/qol.vim

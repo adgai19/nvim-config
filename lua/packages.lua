@@ -1,9 +1,21 @@
--- local present, packer = pcall(require, "plugins.packerInit")
 -- if not present then
 -- 	return false
 -- end
+-- local fn = vim.fn
+-- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if fn.empty(fn.glob(install_path)) > 0 then
+-- packer_bootstrap = fn.system({
+-- "git",
+-- "clone",
+-- "--depth",
+-- "1",
+-- "https://github.com/wbthomason/packer.nvim",
+-- install_path,
+-- })
+-- end
 
-local packer = require("packer")
+local present, packer = pcall(require, "packer")
+-- local packer = require("packer")
 local use = packer.use
 return packer.startup(function()
 	use("lewis6991/impatient.nvim")
@@ -172,7 +184,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("nacro90/numb.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
-	use({ "norcalli/nvim-colorizer.lua", config = require("colorizer").setup() })
+	-- use({ "norcalli/nvim-colorizer.lua", config = require("colorizer").setup() })
 	use({
 		"weilbith/nvim-code-action-menu",
 	})
@@ -187,7 +199,7 @@ hi Normal guibg=NONE ctermbg=NONE
 			require("gitsigns").setup()
 		end,
 	})
-	use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
+	-- use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
 	use({ "j-hui/fidget.nvim" })
 
 	use("jremmen/vim-ripgrep")
@@ -199,4 +211,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	})
 	use("chrisbra/matchit")
 	use("romainl/vim-qf")
+	--	if packer_bootstrap then
+	--		require("packer").sync()
+	--	end
 end)

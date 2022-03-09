@@ -8,10 +8,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_yank,
 })
 
-local markdownSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
-vim.api.nvim_create_autocmd("Filetype markdown", { command = "setlocal spell", group = markdownSpell })
-vim.api.nvim_create_autocmd("Bufread,BufNewFile *.md", { command = "setlocal spell", group = markdownSpell })
-
-local texSpell = vim.api.nvim_create_augroup("texSpell", { clear = true })
-vim.api.nvim_create_autocmd("Filetype tex", { command = "setlocal spell", group = texSpell })
-vim.api.nvim_create_autocmd("Bufread,BufNewFile *.tex", { command = "setlocal spell", group = texSpell })
+-- local markdownSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
+-- vim.api.nvim_create_autocmd("Filetype markdown", { command = "setlocal spell", group = markdownSpell })
+-- vim.api.nvim_create_autocmd("Bufread,BufNewFile *.md", { command = "setlocal spell", group = markdownSpell })
+--
+-- local texSpell = vim.api.nvim_create_augroup("texSpell", { clear = true })
+-- vim.api.nvim_create_autocmd("Filetype tex", { command = "setlocal spell", group = texSpell })
+-- vim.api.nvim_create_autocmd("Bufread,BufNewFile *.tex", { command = "setlocal spell", group = texSpell })

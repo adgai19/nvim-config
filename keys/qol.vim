@@ -25,7 +25,7 @@ nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 
 nnoremap <Leader>h :split<cr>
-nnoremap <Leader>v :vsplit
+nnoremap <Leader>v :vsplit<cr>
 
 "quickly source 
 nnoremap <Leader>s :w<cr>:so %<cr>

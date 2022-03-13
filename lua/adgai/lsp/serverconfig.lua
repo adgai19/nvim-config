@@ -181,7 +181,7 @@ local opts = {
 		},
 	},
 }
-require("lspconfig").sumneko_lua.setup(opts)
+lspconfig.sumneko_lua.setup(opts)
 
 lspconfig.jsonls.setup({
 	cmd = { "vscode-json-language-server", "--stdio" },
@@ -235,4 +235,3 @@ lspconfig.jsonls.setup({
 		},
 	},
 })
-require("lspconfig").ansiblels.setup({})

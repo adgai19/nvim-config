@@ -66,3 +66,6 @@ nnoremap \ :Rg<space>
 
 " noremap <UP> <c-y>
 " noremap <down> <c-e>
+" clear highlight after search
+"
+nnoremap <expr> <CR> {-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()

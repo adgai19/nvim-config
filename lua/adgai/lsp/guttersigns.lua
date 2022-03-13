@@ -1,5 +1,5 @@
 -- Capture real implementation of function that sets signs
-local orig_set_signs = vim.lsp.diagnostic.set_signs
+local orig_set_signs = vim.diagnostic.set_signs
 local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
 	-- original func runs some checks, which I think is worth doing
 	-- but maybe overkill
@@ -10,7 +10,7 @@ local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
 	-- early escape
 	if not diagnostics then
 		return
-  end
+	end
 
 	-- Work out max severity diagnostic per line
 	local max_severity_per_line = {}
@@ -34,4 +34,4 @@ local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
 	-- call original function
 	orig_set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
 end
-vim.lsp.diagnostic.set_signs = set_signs_limited
+vim.diagnostic.set_signs = set_signs_limited

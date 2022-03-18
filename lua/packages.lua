@@ -1,6 +1,4 @@
-local present, packer = pcall(require, "packer")
--- vim.notify(vim.inspect(present))
--- local packer = require("packer")
+local packer = require("plugins.packerInit")
 local use = packer.use
 return packer.startup(function()
 	use("lewis6991/impatient.nvim")
@@ -125,6 +123,9 @@ hi Normal guibg=NONE ctermbg=NONE
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-dap-python")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("David-Kunz/jester")
+	use("rcarriga/nvim-dap-ui")
 
 	--treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

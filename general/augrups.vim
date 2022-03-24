@@ -49,10 +49,10 @@ augroup fmt
   au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 augroup END
 
-augroup qflist
-  autocmd!
-  au BufReadPost quickfix lua require('adgai.cyclekeymaps').change_mode()
-augroup END
+" augroup qflist
+"   autocmd!
+"   au BufReadPost quickfix lua require('adgai.cyclekeymaps').change_mode()
+" augroup END
 
 augroup linters
   autocmd!

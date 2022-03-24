@@ -3,19 +3,30 @@
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 800 })
 	end,
 	group = highlight_yank,
 })
 
 local markdownSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
--- vim.api.nvim_create_autocmd("Filetype markdown", { command = "setlocal spell", group = markdownSpell,pattern="*.md" })
---[[vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd("FileType", { pattern = "markdown", group = markdowwnSpell, command = "setlocal spell" })
+vim.api.nvim_create_autocmd(
 	{ "Bufread", "BufNewFile " },
 	{ command = "setlocal spell", pattern = "*.md", group = markdownSpell }
-)]]
-
---local texSpell = vim.api.nvim_create_augroup("texSpell", { clear = true })
--- vim.api.nvim_create_autocmd("Filetype tex", { command = "setlocal spell", group = texSpell })
---vim.api.nvim_create_autocmd("Bufread,BufNewFile *.tex", { command = "setlocal spell", group = texSpell })
---vim.notify_once(vim.loop.os_uname().sysname)
+)
+local texSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
+vim.api.nvim_create_autocmd("FileType", { pattern = "latex", group = markdowwnSpell, command = "setlocal spell" })
+vim.api.nvim_create_autocmd(
+	{ "Bufread", "BufNewFile " },
+	{ command = "setlocal spell", pattern = "*.tex", group = texSpell }
+)
+local packerSync = vim.api.nvim_create_augroup("packerSync", { clear = true })
+vim.api.nvim_create_autocmd(
+	"BufWritePost",
+	{ pattern = "packages.lua", command = "source <afile>|PackerSync", group = packerSync }
+)
+local qflist = vim.api.nvim_create_augroup("qflist", { clear = true })
+vim.api.nvim_create_autocmd(
+	"BufReadPost",
+	{ pattern = "quickfix", callback = require("adgai.cyclekeymaps").change_mode, group = qflist }
+)

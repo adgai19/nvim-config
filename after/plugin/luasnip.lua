@@ -1,9 +1,7 @@
 local present, ls = pcall(require, "luasnip")
 if not present then
-	vim.notify("luasnip not loaded")
 	return
 end
-vim.notify("luasnip loaded")
 
 -- settings
 ls.config.set_config({

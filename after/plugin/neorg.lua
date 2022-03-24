@@ -1,4 +1,4 @@
-vim.notify_once("neorg loaded")
+-- vim.notify_once("neorg loaded")
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},

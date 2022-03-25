@@ -3,7 +3,7 @@
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 800 })
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
 	end,
 	group = highlight_yank,
 })
@@ -30,3 +30,6 @@ vim.api.nvim_create_autocmd(
 	"BufReadPost",
 	{ pattern = "quickfix", callback = require("adgai.cyclekeymaps").change_mode, group = qflist }
 )
+local linters = vim.api.nvim_create_augroup("linters", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })
+vim.api.nvim_create_autocmd("BufWritePost", { callback = require("adgai.cyclekeymaps").change_mode, group = linters })

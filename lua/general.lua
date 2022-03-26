@@ -66,6 +66,9 @@ vim.opt.termguicolors = true
 vim.opt.undodir = vim.fn.expand("~") .. "/.config/nvim/undodir/undo"
 vim.opt.undofile = true
 vim.opt.number = true
+vim.cmd([[
+set iskeyword-=_
+]])
 
 vim.opt.background = "dark"
 vim.cmd([[

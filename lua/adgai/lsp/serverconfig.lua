@@ -1,7 +1,5 @@
 local lspconfig = require("lspconfig")
 
-lspconfig.gopls.setup({})
-
 lspconfig.texlab.setup({
 	cmd = { "texlab" },
 	filetypes = { "tex", "bib" },
@@ -56,6 +54,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+require("lspconfig").gopls.setup({ capabilities = capabilities })
 
 lspconfig.cssls.setup({ capabilities = capabilities })
 

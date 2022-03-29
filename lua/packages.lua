@@ -30,9 +30,10 @@ return packer.startup(function()
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 	-- use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
-	use("onsails/lspkind-nvim")
+	-- use("onsails/lspkind-nvim")
 	-- use("glepnir/lspsaga.nvim")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
+	use("stevearc/aerial.nvim")
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -96,6 +97,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
+	use("fatih/vim-go")
 	use({
 		"simrat39/symbols-outline.nvim",
 		config = function()

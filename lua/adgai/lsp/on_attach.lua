@@ -1,6 +1,8 @@
+local _, aerial = pcall(require, "aerial")
+
 local on_attach = function(client, bufnr)
 	local resolved_capabilities = client.resolved_capabilities
-
+	aerial.on_attach(client, bufnr)
 	require("lsp_signature").on_attach() -- Note: add in lsp client on-attach
 	-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")

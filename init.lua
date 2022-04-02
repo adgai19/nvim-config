@@ -1,6 +1,6 @@
--- require("impatient")
+require("impatient")
 require("general")
--- require("impatient").enable_profile()
+require("impatient").enable_profile()
 require("autocmds")
 require("keymaps")
 require("packer").init()

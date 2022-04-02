@@ -1,9 +1,22 @@
 local lspconfig = require("lspconfig")
+local on_attach = require("adgai.lsp.on_attach").on_attach
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = { "documentation", "detail", "additionalTextEdits" },
+}
+
+local serverSetup = function(server)
+	lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
+end
 
 lspconfig.texlab.setup({
 	cmd = { "texlab" },
 	filetypes = { "tex", "bib" },
 
+	on_attach = on_attach,
 	settings = {
 		texlab = {
 			auxDirectory = ".",
@@ -24,15 +37,25 @@ lspconfig.texlab.setup({
 	},
 })
 
-lspconfig.vimls.setup({})
-
-lspconfig.ccls.setup({})
-
-lspconfig.clangd.setup({})
+local serverlist = {
+	"vimls",
+	"ccls",
+	"clangd",
+	"cssls",
+	"html",
+	"emmet_ls",
+	"jedi_language_server",
+	"dockerls",
+	"ansiblels",
+	"vuels",
+	"terraform_lsp",
+	-- "yamlls",
+}
+for _, server in ipairs(serverlist) do
+	serverSetup(server)
+end
 
 local configs = require("lspconfig/configs")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 if not lspconfig.emmet_ls then
 	configs.emmet_ls = {
@@ -47,27 +70,8 @@ if not lspconfig.emmet_ls then
 	}
 end
 
-lspconfig.emmet_ls.setup({ capabilities = capabilities })
-
 lspconfig.eslint.setup({})
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = { "documentation", "detail", "additionalTextEdits" },
-}
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 require("lspconfig").gopls.setup({ capabilities = capabilities })
-
-lspconfig.cssls.setup({ capabilities = capabilities })
-
-lspconfig.jedi_language_server.setup({ capabilities = capabilities })
-
-lspconfig.html.setup({ capabilities = capabilities })
-
-local on_attach = require("adgai.lsp.on_attach").on_attach
-
-lspconfig.dockerls.setup({ on_attach = on_attach })
-
-lspconfig.ansiblels.setup({ on_attach = on_attach })
-lspconfig.vuels.setup({ on_attach = on_attach, capabilities = capabilities })
 
 lspconfig.tsserver.setup({
 	-- root_dir = lspconfig.util.root_pattern("yarn.lock","package.json", "lerna.json", ".git"),
@@ -181,6 +185,8 @@ local opts = {
 	},
 }
 lspconfig.sumneko_lua.setup(opts)
+-- lspconfig["sumneko_lua"].setup(opts)
+require("lspconfig").terraform_lsp.setup({ capabilities = capabilities, on_attach = on_attach })
 
 lspconfig.jsonls.setup({
 	cmd = { "vscode-json-language-server", "--stdio" },

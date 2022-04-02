@@ -31,4 +31,5 @@ end, { silent = true })
 local lua_snippets = require("adgai.snippets.lua").lua_snippets
 local all_snippets = require("adgai.snippets.all").snippets
 
-ls.snippets = { all = all_snippets, lua = lua_snippets }
+ls.add_snippets("all", all_snippets)
+ls.add_snippets("lua", lua_snippets)

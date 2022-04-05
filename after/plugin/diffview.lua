@@ -102,3 +102,7 @@ require("diffview").setup({
 		},
 	},
 })
+
+local nnoremap = require("keymaps.helpers").nnoremap
+nnoremap("<leader>do", "<cmd>DiffviewOpen<cr>")
+nnoremap("<leader>dc", "<cmd>DiffviewClose<cr>")

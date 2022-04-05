@@ -1,3 +1,7 @@
 require("keymaps.telescope")
 require("keymaps.neorooter")
 require("keymaps.worktrees")
+require("keymaps.random")
+require("keymaps.harpoon")
+require("keymaps.fugitive")
+require("keymaps.tabs")

@@ -1,15 +1,3 @@
-" augroup markdownSpell
-"     autocmd!
-"     autocmd FileType markdown setlocal spell
-"     autocmd BufRead,BufNewFile *.md setlocal spell
-" augroup END
-
-" augroup texspell
-"     autocmd!
-"     autocmd FileType tex setlocal spell
-"     autocmd BufRead,BufNewFile *.tex setlocal spell
-" augroup END
-
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
   if &wrap
@@ -47,8 +35,3 @@ augroup fmt
 augroup END
 
 
-" augroup linters
-"   autocmd!
-"   au BufWritePost	lua vim.diagnostic.setloclist()
-"   au BufWritePost	lua require('adgai.cyclekeymaps').change_mode("ll")
-" augroup END

@@ -9,5 +9,4 @@ require("adgai.lsp")
 require("adgai.cyclekeymaps")
 vim.cmd([[
 source $HOME/.config/nvim/general/augrups.vim
-source $HOME/.config/nvim/keys/init.vim
 ]])

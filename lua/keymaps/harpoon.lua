@@ -1,5 +1,4 @@
 local nnoremap = require("keymaps.helpers").nnoremap
-vim.notify_once("loaded harpoon keymaps")
 
 nnoremap("<leader>na", require("harpoon.mark").add_file)
 nnoremap("<leader>ni", require("harpoon.ui").toggle_quick_menu)

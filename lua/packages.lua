@@ -124,6 +124,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	--dap
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
+	use("Pocco81/DAPInstall.nvim")
 	use("mfussenegger/nvim-dap-python")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("David-Kunz/jester")

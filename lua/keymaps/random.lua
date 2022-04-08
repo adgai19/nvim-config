@@ -35,6 +35,7 @@ xnoremap("<leader>p", '"_dP')
 
 nnoremap("<leader>d", '"_d')
 vnoremap("<leader>d", '"_d')
+nnoremap("<leader>cf", "<cmd>Explore<cr>")
 
 nnoremap("Q", "@q")
 nnoremap("J", "zJ`z")

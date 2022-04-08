@@ -3,10 +3,8 @@ require("general")
 require("impatient").enable_profile()
 require("autocmds")
 require("keymaps")
-require("packer").init()
 require("packages")
-require("adgai.lsp")
-require("adgai.cyclekeymaps")
+require("adgai")
 vim.cmd([[
 source $HOME/.config/nvim/general/augrups.vim
 ]])

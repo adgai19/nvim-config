@@ -37,15 +37,16 @@ return packer.startup(function()
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("nvim-telescope/telescope-project.nvim")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", after = "telescope.nvim" })
+	use({ "nvim-telescope/telescope-project.nvim", after = "telescope.nvim" })
 	use({
 		"nvim-telescope/telescope-frecency.nvim",
 		requires = { "tami5/sqlite.lua" },
+		after = "telescope.nvim",
 	})
-	use("nvim-telescope/telescope-dap.nvim")
-	use("nvim-telescope/telescope-packer.nvim")
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
+	use({ "nvim-telescope/telescope-dap.nvim" })
+	use({ "nvim-telescope/telescope-packer.nvim", after = "telescope.nvim" })
+	use({ "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" })
 
 	-- folke stuff
 	-- cool guy with cool plugins
@@ -65,16 +66,6 @@ return packer.startup(function()
 	})
 	use({
 		"folke/tokyonight.nvim",
-		config = function()
-			-- code
-			vim.g.tokyonight_style = "night"
-			vim.g.tokyonight_italic_functions = true
-			vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-			vim.cmd([[colorscheme tokyonight]])
-			vim.cmd([[
-hi Normal guibg=NONE ctermbg=NONE
-]])
-		end,
 	})
 	-- not working till some plenary stuff works itself out
 	use({
@@ -137,6 +128,7 @@ hi Normal guibg=NONE ctermbg=NONE
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
 	use("ThePrimeagen/git-worktree.nvim")
+	use("theprimeagen/jvim.nvim")
 	-- use({
 	-- 	"ThePrimeagen/refactoring.nvim",
 	-- 	requires = {

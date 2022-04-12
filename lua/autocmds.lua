@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd(
 local qflist = vim.api.nvim_create_augroup("qflist", { clear = true })
 vim.api.nvim_create_autocmd(
 	"BufReadPost",
-	{ pattern = "quickfix", callback = require("adgai.cyclekeymaps").change_mode, group = qflist }
+	{ pattern = "quickfix", callback = require("adgai.cyclekeymaps").change_mode_qf, group = qflist }
 )
 -- local linters = vim.api.nvim_create_augroup("linters", { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })

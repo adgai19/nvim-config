@@ -1,5 +1,3 @@
--- vim.api.nvim_create_autocmd("BufWritePost ~/.config/nvim/lua/packages.lua", { command = "source <afile>|PackerSync" })
-
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()

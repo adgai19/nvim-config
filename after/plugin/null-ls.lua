@@ -16,6 +16,6 @@ ls.setup({
         prefer_local = "node_modules/.bin",
 		}),
 		ls.builtins.completion.spell,
-    ls.builtin.diagnostics.ansiblelint
+    ls.builtins.diagnostics.ansiblelint
 	},
 })

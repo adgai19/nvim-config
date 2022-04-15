@@ -99,6 +99,7 @@ return packer.startup(function()
 			require("symbols-outline").setup(opts)
 		end,
 	})
+  use 'mfussenegger/nvim-lint'
 
 	--tpope
 	use("tpope/vim-eunuch")

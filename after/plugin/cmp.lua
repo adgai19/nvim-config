@@ -1,16 +1,16 @@
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+-- 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+-- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 -- Setup nvim-cmp.
 --
 
 local cmp = require("cmp")
 -- local lspkind = require("lspkind")
-local luasnip = require("luasnip")
-local t = function(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+-- local luasnip = require("luasnip")
+-- local t = function(str)
+-- 	return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
 local kind_icons = {
 	Text = "",
 	Method = "",
@@ -41,9 +41,7 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			-- vim.fn["vsnip#anonymous"](args.body)
 			require("luasnip").lsp_expand(args.body)
-			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
 	formatting = {
@@ -62,18 +60,18 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		-- ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		-- ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 		-- ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 		-- ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-		-- ["<CR>"] = cmp.mapping.confirm({
-		-- 	behavior = cmp.ConfirmBehavior.Replace,
-		-- 	select = true,
-		-- }),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
 
 		["<C-y>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
@@ -108,9 +106,8 @@ cmp.setup({
 		-- }),
 	},
 	sources = {
-		-- { name = "luasnip", max_item_count = 4 },
+		{ name = "luasnip", max_item_count = 4 },
 		{ name = "nvim_lsp_signature_help" },
-		-- { name = "ultisnips", max_item_count = 6 }, -- For ultisnips users.{}
 		{ name = "nvim_lua", max_item_count = 10 },
 		{ name = "nvim_lsp", max_item_count = 12 },
 		{ name = "buffer", keyword_length = 2, max_item_count = 3 },
@@ -124,7 +121,17 @@ require("cmp").setup.cmdline(":", {
 	},
 })
 require("cmp").setup.cmdline("/", {
-	sources = {
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp_document_symbol" },
+	}, {
 		{ name = "buffer" },
-	},
+	}),
+})
+
+cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+	}, {
+		{ name = "buffer" },
+	}),
 })

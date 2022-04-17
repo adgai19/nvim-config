@@ -29,6 +29,7 @@ return packer.startup(function()
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
+	use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 	-- use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
 	-- use("onsails/lspkind-nvim")
 	-- use("glepnir/lspsaga.nvim")
@@ -99,7 +100,7 @@ return packer.startup(function()
 			require("symbols-outline").setup(opts)
 		end,
 	})
-  use 'mfussenegger/nvim-lint'
+	use("mfussenegger/nvim-lint")
 
 	--tpope
 	use("tpope/vim-eunuch")

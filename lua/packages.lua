@@ -31,10 +31,15 @@ return packer.startup(function()
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 	use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 	-- use({ "mlaursen/vim-react-snippets", after = "cmp-path" })
-	-- use("onsails/lspkind-nvim")
+	use("onsails/lspkind-nvim")
 	-- use("glepnir/lspsaga.nvim")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use("stevearc/aerial.nvim")
+	use({
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+		end,
+	})
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -117,7 +122,8 @@ return packer.startup(function()
 	--dap
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
-	use("Pocco81/DAPInstall.nvim")
+	-- use("Pocco81/DAPInstall.nvim")
+  use 'Pocco81/dap-buddy.nvim'
 	use("mfussenegger/nvim-dap-python")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("David-Kunz/jester")

@@ -45,19 +45,29 @@ cmp.setup({
 		end,
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			-- Source
-			vim_item.menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
-				latex_symbols = "[LaTeX]",
-			})[entry.source.name]
-			return vim_item
-		end,
+		format = require("lspkind").cmp_format({
+			mode = "symbol", -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function(entry, vim_item)
+				return vim_item
+			end,
+		}),
+		-- format = function(entry, vim_item)
+		-- 	-- Kind icons
+		-- 	vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+		-- 	-- Source
+		-- 	vim_item.menu = ({
+		-- 		buffer = "[Buffer]",
+		-- 		nvim_lsp = "[LSP]",
+		-- 		luasnip = "[LuaSnip]",
+		-- 		nvim_lua = "[Lua]",
+		-- 		latex_symbols = "[LaTeX]",
+		-- 	})[entry.source.name]
+		-- 	return vim_item
+		-- end,
 	},
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),

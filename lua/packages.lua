@@ -16,7 +16,7 @@ return packer.startup(function()
 	use("nvim-lua/popup.nvim")
 	-- use("haringsrob/nvim_context_vt")
 	use("https://github.com/airblade/vim-rooter")
-	use("nyngwang/NeoRoot.lua")
+	-- use("nyngwang/NeoRoot.lua")
 
 	-- completion
 	-- use({ "rafamadriz/friendly-snippets" })
@@ -123,7 +123,7 @@ return packer.startup(function()
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
 	-- use("Pocco81/DAPInstall.nvim")
-  use 'Pocco81/dap-buddy.nvim'
+	-- use("Pocco81/dap-buddy.nvim")
 	use("mfussenegger/nvim-dap-python")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("David-Kunz/jester")
@@ -132,6 +132,7 @@ return packer.startup(function()
 	--treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use({ "nvim-treesitter/playground", opt = true })
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
@@ -155,7 +156,6 @@ return packer.startup(function()
 		"rcarriga/nvim-notify",
 		config = function()
 			require("notify").setup({
-
 				background_colour = "#000000",
 			})
 			vim.notify = require("notify")

@@ -18,7 +18,6 @@ parser_configs.norg_table = {
 	},
 }
 require("nvim-treesitter.configs").setup({
-	-- ensure_installed = {"lua", "cpp", "python", "c", "norg", "latex"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
 		enable = true, -- false will disable the whole extension
@@ -35,11 +34,48 @@ require("nvim-treesitter.configs").setup({
 	context_commentstring = {
 		enable = true,
 	},
-	-- indent = {enable = true},
-	refactor = {
-		highlight_definitions = { enable = true },
-		highlight_current_scope = { enable = true },
-		smart_rename = { enable = true, keymaps = { smart_rename = "grr" } },
+	indent = { enable = false },
+	textobjects = {
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>a"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>A"] = "@parameter.inner",
+			},
+		},
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = "@class.outer",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
+		},
 	},
 	navigation = {
 		enable = true,

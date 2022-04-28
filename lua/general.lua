@@ -35,7 +35,7 @@ vim.opt.hlsearch = false
 vim.opt.smartcase = true
 
 vim.opt.lazyredraw = true
-vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.swapfile = false
 vim.opt.ignorecase = false
 vim.opt.autochdir = true
@@ -59,8 +59,10 @@ vim.g[":tmux_navigator_save_on_switch"] = 2
 -- autocmd BufLeave,FocusLost,InsertEnter   * vim.opt.norelativenumber
 -- augroup END
 -- ]])
-
-vim.opt.shell = "/bin/bash"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod="expr"
+vim.opt.shell = "/bin/zsh"
 vim.g["python3_host_prog"] = "/usr/bin/python3"
 vim.opt.termguicolors = true
 vim.opt.undodir = vim.fn.expand("~") .. "/.config/nvim/undodir/undo"

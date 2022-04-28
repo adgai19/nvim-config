@@ -1,4 +1,4 @@
--- require("impatient")
+require("impatient")
 require("general")
 require("impatient").enable_profile()
 require("autocmds")

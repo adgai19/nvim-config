@@ -70,8 +70,8 @@ cmp.setup({
 		-- end,
 	},
 	mapping = {
-		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
 		-- ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 		-- ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -81,12 +81,12 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
-		}),
+		}, { "i", "c" }),
 
 		["<C-y>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
-		}),
+		}, { "i", "c" }),
 		-- ["<Tab>"] = cmp.mapping(function(fallback)
 		-- 	if cmp.visible() then
 		-- 		cmp.select_next_item()

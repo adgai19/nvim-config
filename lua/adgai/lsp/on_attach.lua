@@ -1,11 +1,5 @@
-local _, aerial = pcall(require, "aerial")
-
 local on_attach = function(client, bufnr)
-	local resolved_capabilities = client.server_capabilities
-	aerial.on_attach(client, bufnr)
 	require("lsp_signature").on_attach() -- Note: add in lsp client on-attach
-	-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	-- vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -30,11 +24,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	if resolved_capabilities.document_highlight then
-		vim.api.nvim_command([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
-		vim.api.nvim_command([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
-		vim.api.nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.util.buf_clear_references()]])
-	end
 end
 
 return { on_attach = on_attach }

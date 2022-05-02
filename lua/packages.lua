@@ -34,12 +34,7 @@ return packer.startup(function()
 	use("onsails/lspkind-nvim")
 	-- use("glepnir/lspsaga.nvim")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use({
-		"stevearc/aerial.nvim",
-		config = function()
-			require("aerial").setup()
-		end,
-	})
+	use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -87,6 +82,7 @@ return packer.startup(function()
 	--lsp
 	use("folke/nvim-lsp-ts-utils")
 	use({ "ray-x/lsp_signature.nvim" })
+	use("lspcontainers/lspcontainers.nvim")
 	use("neovim/nvim-lspconfig")
 	use({ "mfussenegger/nvim-jdtls" })
 	use("kshenoy/vim-signature")
@@ -106,6 +102,7 @@ return packer.startup(function()
 		end,
 	})
 	use("mfussenegger/nvim-lint")
+	use("jose-elias-alvarez/typescript.nvim")
 
 	--tpope
 	use("tpope/vim-eunuch")
@@ -201,5 +198,5 @@ return packer.startup(function()
 	})
 	use("chrisbra/matchit")
 	use("romainl/vim-qf")
-	--	end
+	use("pearofducks/ansible-vim")
 end)

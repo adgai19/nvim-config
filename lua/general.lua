@@ -44,21 +44,10 @@ vim.opt.incsearch = true
 vim.opt.confirm = true
 vim.opt.showtabline = 0
 vim.opt.compatible = false
+vim.wo.colorcolumn = "80"
 vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
+-- vim.cmd([[au ColorColumn * hi Normal ctermbg=none guibg=none]])
 vim.g[":tmux_navigator_save_on_switch"] = 2
--- vim.cmd([[autocmd FileType markdown vim.opt.spell]])
-
--- vim.opt.number=true
-
--- vim.cmd([[
---
--- set number relativenumber
--- augroup numbertoggle
--- autocmd!
--- autocmd BufEnter,FocusGained,InsertLeave * vim.opt.relativenumber
--- autocmd BufLeave,FocusLost,InsertEnter   * vim.opt.norelativenumber
--- augroup END
--- ]])
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.foldmethod="expr"
@@ -74,6 +63,7 @@ set iskeyword-=_
 
 vim.opt.background = "dark"
 vim.cmd([[
+set path=..
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
@@ -84,6 +74,5 @@ augroup END
 vim.opt.updatetime = 2000
 
 vim.g.do_filetype_lua = 1
-
 vim.g.did_load_filetypes = 0
 -- vim.opt.colorcolumn = 80

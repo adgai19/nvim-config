@@ -34,7 +34,6 @@ return packer.startup(function()
 	use("onsails/lspkind-nvim")
 	-- use("glepnir/lspsaga.nvim")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 
 	-- telescope
 	use("nvim-telescope/telescope.nvim")
@@ -128,8 +127,8 @@ return packer.startup(function()
 
 	--treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use({ "nvim-treesitter/playground", opt = true })
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/playground")
 
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")

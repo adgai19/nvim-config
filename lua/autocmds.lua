@@ -31,3 +31,6 @@ vim.api.nvim_create_autocmd(
 -- local linters = vim.api.nvim_create_augroup("linters", { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })
 -- vim.api.nvim_create_autocmd("BufWritePost", { callback = require("adgai.cyclekeymaps").change_mode, group = linters })
+--
+-- local fugitive = vim.api.nvim_create_augroup("custom_fugitive", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", { pattern = "fugitive", group = fugitive, command = "nnoremap <tab> =" })

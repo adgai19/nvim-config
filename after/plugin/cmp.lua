@@ -69,6 +69,7 @@ cmp.setup({
 })
 
 require("cmp").setup.cmdline(":", {
+	completion = { autocomplete = false },
 	sources = {
 		{ name = "cmdline" },
 	},
@@ -76,6 +77,7 @@ require("cmp").setup.cmdline(":", {
 })
 
 require("cmp").setup.cmdline("/", {
+	completion = { autocomplete = false },
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp_document_symbol" },
 	}, {

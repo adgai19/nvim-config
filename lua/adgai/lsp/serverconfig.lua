@@ -1,15 +1,9 @@
 local lspconfig = require("lspconfig")
 local on_attach = require("adgai.lsp.on_attach").on_attach
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = { "documentation", "detail", "additionalTextEdits" },
-}
+local make_client_capabilities = require("adgai.lsp.on_attach").make_client_capabilities
 
 local serverSetup = function(server)
-	lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig[server].setup({ on_attach = on_attach, capabilities = make_client_capabilities() })
 end
 
 local serverlist = {
@@ -75,11 +69,10 @@ lspconfig.efm.setup({
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-
 local library = vim.api.nvim_get_runtime_file("", true)
 table.insert(library, "/usr/share/awesome/lib")
 local opts = {
-	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = make_client_capabilities(),
 	cmd = require("lspcontainers").command("sumneko_lua"),
 	on_attach = require("adgai.lsp.on_attach").on_attach,
 	settings = {
@@ -100,7 +93,7 @@ local opts = {
 }
 lspconfig.sumneko_lua.setup(opts)
 -- lspconfig["sumneko_lua"].setup(opts)
-require("lspconfig").terraform_lsp.setup({ capabilities = capabilities, on_attach = on_attach })
+require("lspconfig").terraform_lsp.setup({ capabilities = make_client_capabilities(), on_attach = on_attach })
 
 lspconfig.jsonls.setup({
 	before_init = function(params)
@@ -108,7 +101,7 @@ lspconfig.jsonls.setup({
 	end,
 	cmd = require("lspcontainers").command("jsonls"),
 	on_attach = on_attach,
-	capabilities = capabilities,
+	capabilities = make_client_capabilities(),
 	filetypes = { "json", "jsonc" },
 	settings = {
 		json = {
@@ -161,7 +154,7 @@ lspconfig.jsonls.setup({
 lspconfig.texlab.setup({
 	cmd = { "texlab" },
 	filetypes = { "tex", "bib" },
-
+	capabilities = make_client_capabilities(),
 	on_attach = on_attach,
 	settings = {
 		texlab = {

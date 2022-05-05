@@ -23,7 +23,16 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap("n", "<space>bf", "<cmd>lua vim.lsp.buf.format({async=true})<CR>", opts)
 end
 
-return { on_attach = on_attach }
+local make_client_capabilities = function()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+	capabilities.textDocument.completion.completionItem.resolveSupport = {
+		properties = { "documentation", "detail", "additionalTextEdits" },
+	}
+	return capabilities
+end
+return { on_attach = on_attach, make_client_capabilities = make_client_capabilities }

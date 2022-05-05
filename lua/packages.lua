@@ -7,7 +7,7 @@ return packer.startup(function()
 	})
 
 	-- tmux helpers
-	use("christoomey/vim-tmux-navigator")
+	-- use("christoomey/vim-tmux-navigator")
 	use("tmux-plugins/vim-tmux")
 	use("preservim/vimux")
 

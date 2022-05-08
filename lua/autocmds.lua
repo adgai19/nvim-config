@@ -7,13 +7,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 local markdownSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { pattern = "markdown", group = markdowwnSpell, command = "setlocal spell" })
+vim.api.nvim_create_autocmd("FileType", { pattern = "markdown", group = markdownSpell, command = "setlocal spell" })
 vim.api.nvim_create_autocmd(
 	{ "Bufread", "BufNewFile " },
 	{ command = "setlocal spell", pattern = "*.md", group = markdownSpell }
 )
 local texSpell = vim.api.nvim_create_augroup("markdownSpell", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { pattern = "latex", group = markdowwnSpell, command = "setlocal spell" })
+vim.api.nvim_create_autocmd("FileType", { pattern = "latex", group = markdownSpell, command = "setlocal spell" })
 vim.api.nvim_create_autocmd(
 	{ "Bufread", "BufNewFile " },
 	{ command = "setlocal spell", pattern = "*.tex", group = texSpell }
@@ -32,5 +32,3 @@ vim.api.nvim_create_autocmd(
 -- vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })
 -- vim.api.nvim_create_autocmd("BufWritePost", { callback = require("adgai.cyclekeymaps").change_mode, group = linters })
 --
--- local fugitive = vim.api.nvim_create_augroup("custom_fugitive", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", { pattern = "fugitive", group = fugitive, command = "nnoremap <tab> =" })

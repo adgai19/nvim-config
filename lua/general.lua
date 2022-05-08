@@ -50,7 +50,7 @@ vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 vim.g[":tmux_navigator_save_on_switch"] = 2
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.opt.foldmethod="expr"
+vim.o.foldenable = false
 vim.opt.shell = "/bin/zsh"
 vim.g["python3_host_prog"] = "/usr/bin/python3"
 vim.opt.termguicolors = true
@@ -75,4 +75,5 @@ vim.opt.updatetime = 2000
 
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
+vim.g.grepprog = "rg"
 -- vim.opt.colorcolumn = 80

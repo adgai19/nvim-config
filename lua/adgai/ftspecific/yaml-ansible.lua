@@ -14,4 +14,11 @@ local FindAnsibleRoleUnderCursor = function()
 end
 
 local nnoremap = require("keymaps.helpers").nnoremap
-nnoremap("<leader>gf", FindAnsibleRoleUnderCursor)
+local augroup = vim.api.nvim_create_augroup("ansible", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "yaml.ansible",
+	callback = function()
+		nnoremap("<leader>gf", FindAnsibleRoleUnderCursor)
+	end,
+	group = augroup,
+})

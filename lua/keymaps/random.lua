@@ -48,7 +48,7 @@ vnoremap("<leader>d", '"_d')
 nnoremap("<leader>cf", "<cmd>Explore<cr>")
 
 nnoremap("Q", "@q")
-nnoremap("J", "zJ`z")
+nnoremap("J", "mzJ`z")
 
 nnoremap("<C-up>", " gt")
 nnoremap("<C-down>", " gT")

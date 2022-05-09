@@ -1,80 +1,51 @@
 local lspconfig = require("lspconfig")
+local lspcontainers = require("lspcontainers")
+
 local on_attach = require("adgai.lsp.on_attach").on_attach
 local make_client_capabilities = require("adgai.lsp.on_attach").make_client_capabilities
 
+-- normal lsp servers
 local serverSetup = function(server)
 	lspconfig[server].setup({ on_attach = on_attach, capabilities = make_client_capabilities() })
 end
 
-local serverlist = {
-	"ansiblels",
-	"vimls",
-	"ccls",
-	"clangd",
-	"cssls",
-	"html",
-	"emmet_ls",
-	"jedi_language_server",
-	"dockerls",
-	"ansiblels",
-	"vuels",
-	"terraform_lsp",
-	"eslint",
-	"gopls",
-}
+local serverlist = { "ansiblels", "vimls", "ccls", "cssls", "emmet_ls", "jedi_language_server", "eslint" }
 for _, server in ipairs(serverlist) do
 	serverSetup(server)
 end
 
-local configs = require("lspconfig/configs")
-
-if not lspconfig.emmet_ls then
-	configs.emmet_ls = {
-		default_config = {
-			cmd = { "emmet-ls", "--stdio" },
-			filetypes = { "html", "css" },
-			root_dir = function(fname)
-				return vim.loop.cwd()
-			end,
-			settings = {},
-		},
-	}
+-- lspcontainer servers with no special options
+local serverContainerSetup = function(server, opts)
+	opts = opts or {}
+	opts.on_attach = on_attach
+	opts.capabilities = make_client_capabilities()
+	opts.cmd = lspcontainers.command(server)
+	lspconfig[server].setup(opts)
 end
 
-local eslint = {
-	lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-	lintStdin = true,
-	lintFormats = { "%f:%l:%c: %m" },
-	lintIgnoreExitCode = true,
-	formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-	formatStdin = true,
-}
-local util = lspconfig.util
+local normalServerContainerList = { "clangd", "gopls", "pylsp", "rust_analyzer" }
+for _, server in ipairs(normalServerContainerList) do
+	serverContainerSetup(server)
+end
 
-lspconfig.efm.setup({
-	init_options = { documentFormatting = true },
-	filetypes = { "javascript", "typescript" },
-	root_dir = function(fname)
-		return util.root_pattern("tsconfig.json")(fname) or util.root_pattern(".eslintrc.js", ".git")(fname)
+-- lspcontainer servers with beforeInit
+local beforeInitServers = { "html", "yamlls", "dockerls", "vuels" }
+local beforeInitOptions = {
+	before_init = function(params)
+		params.processId = vim.NIL
 	end,
-	settings = {
-		rootMarkers = { ".eslintrc.js", ".git/" },
-		languages = {
-			javascript = { eslint },
-			typescript = { eslint },
-		},
-	},
-})
+}
+for _, server in ipairs(beforeInitServers) do
+	serverContainerSetup(server, beforeInitOptions)
+end
 
+-- other servers
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local library = vim.api.nvim_get_runtime_file("", true)
 table.insert(library, "/usr/share/awesome/lib")
 local opts = {
-	capabilities = make_client_capabilities(),
-	cmd = require("lspcontainers").command("sumneko_lua"),
-	on_attach = require("adgai.lsp.on_attach").on_attach,
 	settings = {
 		Lua = {
 			runtime = {
@@ -91,17 +62,12 @@ local opts = {
 		},
 	},
 }
-lspconfig.sumneko_lua.setup(opts)
--- lspconfig["sumneko_lua"].setup(opts)
-require("lspconfig").terraform_lsp.setup({ capabilities = make_client_capabilities(), on_attach = on_attach })
+serverContainerSetup("sumneko_lua", opts)
 
-lspconfig.jsonls.setup({
+local jsonOpts = {
 	before_init = function(params)
 		params.processId = vim.NIL
 	end,
-	cmd = require("lspcontainers").command("jsonls"),
-	on_attach = on_attach,
-	capabilities = make_client_capabilities(),
 	filetypes = { "json", "jsonc" },
 	settings = {
 		json = {
@@ -149,40 +115,5 @@ lspconfig.jsonls.setup({
 			},
 		},
 	},
-})
-
-lspconfig.texlab.setup({
-	cmd = { "texlab" },
-	filetypes = { "tex", "bib" },
-	capabilities = make_client_capabilities(),
-	on_attach = on_attach,
-	settings = {
-		texlab = {
-			auxDirectory = ".",
-			bibtexFormatter = "texlab",
-			build = {
-				args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-				executable = "latexmk",
-				forwardSearchAfter = false,
-				onSave = false,
-			},
-			chktex = { onEdit = false, onOpenAndSave = false },
-			diagnosticsDelay = 300,
-			formatterLineLength = 80,
-			forwardSearch = { args = {} },
-			latexFormatter = "latexindent",
-			latexindent = { modifyLineBreaks = false },
-		},
-	},
-})
-lspconfig.yamlls.setup({
-	settings = {
-		yaml = {
-			-- schemas = {
-			-- 	-- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
-			-- 	-- ["../path/relative/to/file.yml"] = "/.github/workflows/*"
-			-- 	-- ["/path/from/root/of/project"] = "/.github/workflows/*"
-			-- },
-		},
-	},
-})
+}
+serverContainerSetup("jsonls", jsonOpts)

@@ -14,6 +14,8 @@ return packer.startup(function()
 	-- helpers
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")
+	-- use("BurntSushi/ripgrep")
+	-- use("sharkdp/fd")
 	-- use("haringsrob/nvim_context_vt")
 	use("https://github.com/airblade/vim-rooter")
 	-- use("nyngwang/NeoRoot.lua")
@@ -77,12 +79,12 @@ return packer.startup(function()
 	})
 	use("folke/lsp-trouble.nvim")
 	use({ "folke/lua-dev.nvim" })
-
 	--lsp
-	use("folke/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use({ "ray-x/lsp_signature.nvim" })
 	use("lspcontainers/lspcontainers.nvim")
 	use("neovim/nvim-lspconfig")
+	use("b0o/schemastore.nvim")
 	use({ "mfussenegger/nvim-jdtls" })
 	use("kshenoy/vim-signature")
 	-- use({ "tjdevries/nlua.nvim", config = function() end })
@@ -189,7 +191,7 @@ return packer.startup(function()
 	use({ "j-hui/fidget.nvim" })
 
 	use("jremmen/vim-ripgrep")
-	use("windwp/nvim-spectre")
+	use("nvim-pack/nvim-spectre")
 	use({
 		"nvim-neorg/neorg",
 		requires = "nvim-lua/plenary.nvim",
@@ -198,4 +200,5 @@ return packer.startup(function()
 	use("chrisbra/matchit")
 	use("romainl/vim-qf")
 	use("pearofducks/ansible-vim")
+	use("marcushwz/nvim-workbench")
 end)

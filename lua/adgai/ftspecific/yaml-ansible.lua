@@ -2,12 +2,14 @@
 vim.cmd([[set path+=roles/]])
 local FindAnsibleRoleUnderCursor = function()
 	local role_paths = "./roles/"
-	local task_main = vim.fn.expand("<cword>") .. "/tasks/main.yml"
+	local role_path = vim.fn.expand("<cword>")
+	local task_main = role_path .. "/tasks/main.yml"
 	local role_file = vim.fn.findfile(role_paths .. task_main)
-	vim.pretty_print(role_paths .. task_main)
-	vim.pretty_print(role_file)
 	if role_file == "" then
-		print("nothing found")
+		print("nothing found, creating new file")
+		vim.cmd("!mkdir -p " .. role_paths .. role_path .. "/tasks")
+		vim.cmd("!touch " .. role_paths .. task_main)
+		vim.cmd(":e" .. role_paths .. task_main)
 	else
 		vim.cmd(":e" .. role_file)
 	end

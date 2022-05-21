@@ -26,6 +26,9 @@ vim.api.nvim_create_autocmd(
 	{ pattern = "packages.lua", command = "source <afile>|PackerSync", group = packerSync }
 )
 
+local tmux = vim.api.nvim_create_augroup("tmux", { clear = true })
+vim.api.nvim_create_autocmd("BufReadPost", { pattern = "tmux", command = "set filetype=tmux", group = tmux })
+
 local qflist = vim.api.nvim_create_augroup("qflist", { clear = true })
 vim.api.nvim_create_autocmd(
 	"BufReadPost",

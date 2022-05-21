@@ -13,8 +13,8 @@ M.change_mode_qf = function()
 
 		print("current mode", M.mode)
 	elseif M.mode == "qf" then
-		nnoremap("n", "j")
-		nnoremap("e", "k")
+		nnoremap("e", "j")
+		nnoremap("n", "k")
 		M.mode = "normal"
 		-- M.mode = "ll"
 	elseif M.mode == "ll" then

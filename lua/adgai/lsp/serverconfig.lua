@@ -9,7 +9,15 @@ local serverSetup = function(server)
 	lspconfig[server].setup({ on_attach = on_attach, capabilities = make_client_capabilities() })
 end
 
-local serverlist = { "ansiblels", "vimls", "ccls", "cssls", "emmet_ls", "jedi_language_server", "eslint" }
+local serverlist = {
+	"ansiblels",
+	"vimls",
+	"ccls",
+	"cssls",
+	"emmet_ls",
+	"jedi_language_server",
+	"eslint", --[[ "gopls"  ]]
+}
 for _, server in ipairs(serverlist) do
 	serverSetup(server)
 end
@@ -23,7 +31,12 @@ local serverContainerSetup = function(server, opts)
 	lspconfig[server].setup(opts)
 end
 
-local normalServerContainerList = { "clangd", "gopls", "pylsp", "rust_analyzer" }
+local normalServerContainerList = {
+	"clangd",
+	-- "gopls",
+	"pylsp",
+	"rust_analyzer",
+}
 for _, server in ipairs(normalServerContainerList) do
 	serverContainerSetup(server)
 end
@@ -71,49 +84,54 @@ local jsonOpts = {
 	filetypes = { "json", "jsonc" },
 	settings = {
 		json = {
-			schemas = {
-				{
-					fileMatch = { "package.json" },
-					url = "https://json.schemastore.org/package.json",
-				},
-				{
-					fileMatch = { "tsconfig*.json" },
-					url = "https://json.schemastore.org/tsconfig.json",
-				},
-				{
-					fileMatch = {
-						".prettierrc",
-						".prettierrc.json",
-						"prettier.config.json",
-					},
-					url = "https://json.schemastore.org/prettierrc.json",
-				},
-				{
-					fileMatch = { ".eslintrc", ".eslintrc.json" },
-					url = "https://json.schemastore.org/eslintrc.json",
-				},
-				{
-					fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
-					url = "https://json.schemastore.org/babelrc.json",
-				},
-				{
-					fileMatch = { "lerna.json" },
-					url = "https://json.schemastore.org/lerna.json",
-				},
-				{
-					fileMatch = { "now.json", "vercel.json" },
-					url = "https://json.schemastore.org/now.json",
-				},
-				{
-					fileMatch = {
-						".stylelintrc",
-						".stylelintrc.json",
-						"stylelint.config.json",
-					},
-					url = "http://json.schemastore.org/stylelintrc.json",
-				},
-			},
+			-- http = {
+			-- 	proxy = "",
+			-- 	proxyStrictSSL = false,
+			-- 	proxyAuthorization = false,
+			-- 	proxySupport = "off",
+			-- },
+
+			-- schemas = require("schemastore").json.schemas(),
 		},
 	},
 }
 serverContainerSetup("jsonls", jsonOpts)
+
+lspconfig.gopls.setup({
+	cmd = require("lspcontainers").command("ftassigopls", {
+		image = "lspcontainers/gopls",
+		network = "bridge",
+		cmd_builder = function(runtime, workdir, image, network)
+			local volume = workdir .. ":" .. workdir .. ":z"
+			local env = vim.api.nvim_eval("environ()")
+			local gopath = env.GOPATH or env.HOME .. "/go"
+			local gopath_volume = gopath .. ":" .. gopath .. ":z"
+
+			local group_handle = io.popen("id -g")
+			local user_handle = io.popen("id -u")
+
+			local group_id = string.gsub(group_handle:read("*a"), "%s+", "")
+			local user_id = string.gsub(user_handle:read("*a"), "%s+", "")
+
+			group_handle:close()
+			user_handle:close()
+
+			local user = user_id .. ":" .. group_id
+
+			return {
+				runtime,
+				"container",
+				"run",
+				"--interactive",
+				"--network=" .. network,
+				"--rm",
+				"--workdir=" .. workdir,
+				"--volume=" .. volume,
+				"--user=" .. user,
+				image,
+			}
+		end,
+	}),
+	on_attach = on_attach,
+	capabilities = make_client_capabilities(),
+})

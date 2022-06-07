@@ -24,8 +24,9 @@ return packer.startup(function()
 	-- use({ "rafamadriz/friendly-snippets" })
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" })
+	use({ "L3MON4D3/LuaSnip", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
+
 	use("hrsh7th/cmp-cmdline")
 	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
@@ -87,6 +88,12 @@ return packer.startup(function()
 	use("b0o/schemastore.nvim")
 	use({ "mfussenegger/nvim-jdtls" })
 	use("kshenoy/vim-signature")
+	use({
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	})
 	-- use({ "tjdevries/nlua.nvim", config = function() end })
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
@@ -187,7 +194,7 @@ return packer.startup(function()
 			require("gitsigns").setup()
 		end,
 	})
-	-- use({ "windwp/nvim-ts-autotag", config = require("nvim-ts-autotag").setup() })
+	use({ "windwp/nvim-ts-autotag" })
 	use({ "j-hui/fidget.nvim" })
 
 	use("jremmen/vim-ripgrep")

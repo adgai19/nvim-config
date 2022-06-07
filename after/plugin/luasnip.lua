@@ -28,8 +28,13 @@ vim.keymap.set({ "i", "s" }, "<m-k>", function()
 end, { silent = true })
 
 -- snippets
-local lua_snippets = require("adgai.snippets.lua").lua_snippets
-local all_snippets = require("adgai.snippets.all").snippets
+-- local lua_snippets = require("adgai.snippets.lua").lua_snippets
+-- local all_snippets = require("adgai.snippets.all").snippets
+-- local ts_snippets = require("adgai.snippets.javascript").javascript_snippets
+--
+-- ls.add_snippets("all", all_snippets)
+-- ls.add_snippets("lua", lua_snippets)
+-- ls.add_snippets("javascript", ts_snippets)
+-- ls.add_snippets("typescript", ts_snippets)
 
-ls.add_snippets("all", all_snippets)
-ls.add_snippets("lua", lua_snippets)
+-- ls.snippets = require("luasnip-snippets").load_snippets()

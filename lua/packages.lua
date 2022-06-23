@@ -48,7 +48,7 @@ return packer.startup(function()
 		after = "telescope.nvim",
 	})
 	use({ "nvim-telescope/telescope-dap.nvim" })
-	use({ "nvim-telescope/telescope-packer.nvim", after = "telescope.nvim" })
+	use({ "nvim-telescope/telescope-packer.nvim" })
 	use({ "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" })
 
 	-- folke stuff

@@ -44,7 +44,7 @@ vim.opt.incsearch = true
 vim.opt.confirm = true
 vim.opt.showtabline = 0
 vim.opt.compatible = false
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "120"
 vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 -- vim.cmd([[au ColorColumn * hi Normal ctermbg=none guibg=none]])
 vim.g[":tmux_navigator_save_on_switch"] = 2
@@ -57,6 +57,7 @@ vim.opt.termguicolors = true
 vim.opt.undodir = vim.fn.expand("~") .. "/.config/nvim/undodir/undo"
 vim.opt.undofile = true
 vim.opt.number = true
+vim.opt.cmdheight = 1
 vim.cmd([[
 set iskeyword-=_
 ]])

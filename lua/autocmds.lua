@@ -34,8 +34,14 @@ vim.api.nvim_create_autocmd(
 	"BufReadPost",
 	{ pattern = "quickfix", callback = require("adgai.cyclekeymaps").change_mode_qf, group = qflist }
 )
+vim.api.nvim_create_autocmd("BufLeave", {
+	callback = function()
+		if vim.bo.filetype == "qf" then
+			require("adgai.cyclekeymaps").change_mode_qf()
+		end
+	end,
+})
 
--- local linters = vim.api.nvim_create_augroup("linters", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })
--- vim.api.nvim_create_autocmd("BufWritePost", { callback = require("adgai.cyclekeymaps").change_mode, group = linters })
---
+local linters = vim.api.nvim_create_augroup("linters", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", { callback = vim.diagnostic.setloclist, group = linters })
+vim.api.nvim_create_autocmd("BufWritePost", { callback = require("adgai.cyclekeymaps").change_mode, group = linters })

@@ -98,7 +98,9 @@ return packer.startup(function()
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
 	use("simrat39/rust-tools.nvim")
-	use("fatih/vim-go")
+	-- use("fatih/vim-go")
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua")
 	use({
 		"simrat39/symbols-outline.nvim",
 		config = function()
@@ -115,7 +117,8 @@ return packer.startup(function()
 	--tpope
 	use("tpope/vim-eunuch")
 	use("tpope/vim-surround")
-	use("tpope/vim-fugitive")
+	-- use("tpope/vim-fugitive")
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 	use("tpope/vim-scriptease")
 	use({
 		"numToStr/Comment.nvim",
@@ -124,6 +127,7 @@ return packer.startup(function()
 		end,
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
 	--dap
 	--TODO need to set this up
 	use("mfussenegger/nvim-dap")
@@ -138,6 +142,8 @@ return packer.startup(function()
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("nvim-treesitter/playground")
+
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
@@ -208,4 +214,5 @@ return packer.startup(function()
 	use("romainl/vim-qf")
 	use("pearofducks/ansible-vim")
 	use("marcushwz/nvim-workbench")
+	use("MattesGroeger/vim-bookmarks")
 end)

@@ -8,4 +8,3 @@ require("adgai")
 vim.cmd([[
 source $HOME/.config/nvim/general/augrups.vim
 ]])
--- vim.lsp.set_log_level(vim.log.levels.DEBUG)

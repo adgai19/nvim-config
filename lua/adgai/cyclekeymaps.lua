@@ -10,12 +10,13 @@ M.change_mode_qf = function()
 		nnoremap("n", "<cmd>cnext<cr>")
 		nnoremap("e", "<cmd>cprev<cr>")
 		M.mode = "qf"
-
 		print("current mode", M.mode)
 	elseif M.mode == "qf" then
 		nnoremap("e", "j")
 		nnoremap("n", "k")
 		M.mode = "normal"
+		print("current mode", M.mode)
+
 		-- M.mode = "ll"
 	elseif M.mode == "ll" then
 		nnoremap("n", "<cmd>nnext<cr>")

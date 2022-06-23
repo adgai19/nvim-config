@@ -1,3 +1,4 @@
+-- vim.lsp.set_log_level(vim.log.levels.DEBUG)
 local lspconfig = require("lspconfig")
 local lspcontainers = require("lspcontainers")
 

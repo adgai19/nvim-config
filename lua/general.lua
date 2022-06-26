@@ -11,7 +11,6 @@ vim.opt.iskeyword = vim.opt.iskeyword + "-"
 vim.opt.mouse = "a"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- vim.opt.t_Co = 256
 vim.opt.conceallevel = 0
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
@@ -20,7 +19,6 @@ vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
--- vim.opt.laststatus = 3
 
 vim.opt.showmode = false
 vim.opt.number = true
@@ -45,8 +43,7 @@ vim.opt.confirm = true
 vim.opt.showtabline = 0
 vim.opt.compatible = false
 vim.wo.colorcolumn = "120"
-vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
--- vim.cmd([[au ColorColumn * hi Normal ctermbg=none guibg=none]])
+-- vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 vim.g[":tmux_navigator_save_on_switch"] = 2
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"

@@ -11,7 +11,7 @@ neogit.setup({
 	disable_builtin_notifications = false,
 	use_magit_keybindings = true,
 	commit_popup = {
-		kind = "split",
+		kind = "replace",
 	},
 	-- Change the default way of opening neogit
 	-- kind = "tab",
@@ -35,7 +35,7 @@ neogit.setup({
 		--   }
 		-- }
 		--
-		diffview = false,
+		diffview = true,
 	},
 	-- Setting any section to `false` will make the section not render at all
 	sections = {
@@ -67,6 +67,7 @@ neogit.setup({
 		status = {
 			-- Adds a mapping with "B" as key that does the "BranchPopup" command
 			["B"] = "BranchPopup",
+			["q"] = "Close",
 			-- Removes the default mapping of "s"
 			["T"] = "Toggle",
 			["s"] = "Stage",
@@ -76,5 +77,5 @@ neogit.setup({
 
 local nnoremap = require("keymaps.helpers").nnoremap
 nnoremap("<leader>gs", function()
-	neogit.open({ kind = "vsplit" })
+	neogit.open()
 end)

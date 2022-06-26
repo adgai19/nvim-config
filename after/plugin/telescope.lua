@@ -2,8 +2,9 @@ local M = {}
 -- local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
+local action_layout = require("telescope.actions.layout")
 local telescope = require("telescope")
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		-- layout_strategy = "horizontal",
 		-- p
@@ -32,10 +33,16 @@ require("telescope").setup({
 		color_devicons = true,
 		use_less = true,
 		mappings = {
-			i = { ["<c-t>"] = trouble.open_with_trouble },
-			n = { ["<c-t>"] = trouble.open_with_trouble },
+			i = { ["<c-t>"] = trouble.open_with_trouble, ["<M-p>"] = action_layout.toggle_preview },
+			n = { ["<c-t>"] = trouble.open_with_trouble, ["<M-p>"] = action_layout.toggle_preview },
 		},
 	},
+	pickers = {
+		git_branches = {
+			theme = "dropdown",
+		},
+	},
+
 	extensions = {
 		fzy_native = {
 			override_generic_sorter = true,

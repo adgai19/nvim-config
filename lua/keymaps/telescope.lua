@@ -5,10 +5,7 @@ nnoremap("<leader>fg", require("telescope.builtin").live_grep)
 nnoremap("<leader>fb", require("telescope.builtin").buffers)
 nnoremap("<leader>fh", require("telescope.builtin").help_tags)
 nnoremap("<leader>fgi", require("telescope.builtin").git_files)
-nnoremap(
-	"<leader>gb",
-	[[require("telescope.builtin").git_branches(require("telescope.themes").get_dropdown({ previewer = false }))<CR>]]
-)
+nnoremap("<leader>gb", require("telescope.builtin").git_branches)
 
 nnoremap("<leader>fc", require("plugins.telescope").search_dotfiles)
 nnoremap("<leader>fw", require("plugins.telescope").find_word)

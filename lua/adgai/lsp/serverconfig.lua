@@ -136,3 +136,16 @@ lspconfig.gopls.setup({
 	on_attach = on_attach,
 	capabilities = make_client_capabilities(),
 })
+
+require("lspconfig").terraformls.setup({
+	cmd = require("lspcontainers").command("terraformls"),
+	filetypes = { "hcl", "tf", "terraform", "tfvars" },
+	on_attach = on_attach,
+	capabilities = make_client_capabilities(),
+})
+
+require("lspconfig").terraform_lsp.setup({
+	filetypes = { "hcl", "tf", "terraform", "tfvars" },
+	on_attach = on_attach,
+	capabilities = make_client_capabilities(),
+})

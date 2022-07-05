@@ -17,14 +17,32 @@ parser_configs.norg_table = {
 		branch = "main",
 	},
 }
+
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	-- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = {
+		"lua",
+		"javascript",
+		"typescript",
+		"html",
+		"css",
+		"dockerfile",
+		"go",
+		"gomod",
+		"hcl",
+		"json",
+		"tsx",
+		"vue",
+		"yaml",
+	}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
 		enable = true, -- false will disable the whole extension
 	},
+
 	autotag = {
 		enable = true,
 	},
+
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -34,9 +52,11 @@ require("nvim-treesitter.configs").setup({
 			node_decremental = "g-",
 		},
 	},
+
 	context_commentstring = {
 		enable = true,
 	},
+
 	indent = { enable = false },
 	textobjects = {
 		swap = {
@@ -80,6 +100,7 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
+
 	navigation = {
 		enable = true,
 		keymaps = {
@@ -108,6 +129,7 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
+
 	-- playground = {
 	-- 	enable = true,
 	-- 	disable = {},

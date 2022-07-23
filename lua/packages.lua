@@ -82,7 +82,7 @@ return packer.startup(function()
 	use({ "folke/lua-dev.nvim" })
 	--lsp
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use({ "ray-x/lsp_signature.nvim" })
+	-- use({ "ray-x/lsp_signature.nvim" })
 	use("lspcontainers/lspcontainers.nvim")
 	use("neovim/nvim-lspconfig")
 	use("b0o/schemastore.nvim")

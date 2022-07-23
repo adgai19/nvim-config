@@ -6,7 +6,7 @@ nnoremap("<leader>np", require("harpoon.cmd-ui").toggle_quick_menu)
 
 nnoremap("<M-t>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 nnoremap("<M-n>", '<cmd>lua require("harpoon.ui").nav_file(2)<cr>')
-nnoremap("<M-h>", '<cmd>lua lua require("harpoon.ui").nav_file(3)<cr>')
+nnoremap("<M-h>", '<cmd>lua require("harpoon.ui").nav_file(3)<cr>')
 nnoremap("<M-e>", '<cmd>lua require("harpoon.ui").nav_file(4)<cr>')
 
 nnoremap(

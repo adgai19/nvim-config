@@ -1,5 +1,5 @@
 local on_attach = function(client, bufnr)
-	require("lsp_signature").on_attach() -- Note: add in lsp client on-attach
+	-- require("lsp_signature").on_attach() -- Note: add in lsp client on-attach
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end

@@ -31,7 +31,21 @@ local conditions = {
 		return gitdir and #gitdir > 0 and #gitdir < #filepath
 	end,
 }
-
+local function get_buf_option(opt)
+	local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
+	if not status_ok then
+		return nil
+	else
+		return buf_option
+	end
+end
+local function get_modified()
+	if get_buf_option("mod") then
+		local mod = " "
+		return "%#WinBarFilename#" .. mod .. " " .. "%t" .. "%*"
+	end
+	return "%#WinBarFilename#" .. "%t" .. "%*"
+end
 -- Config
 local config = {
 	options = {
@@ -74,15 +88,20 @@ local config = {
 		lualine_c = {},
 		lualine_x = {},
 	},
-
-	tabline = {
-		lualine_a = { "branch" },
-		lualine_b = { "buffers" },
+	winbar = {
+		lualine_a = { "diagnostics" },
+		lualine_b = {},
 		lualine_c = {},
-		lualine_x = {},
+		lualine_x = {
+			function()
+				return "%#WinBarSeparator#" .. "%=" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "%*"
+			end,
+		},
 		lualine_y = {},
 		lualine_z = {},
 	},
+
+	tabline = {},
 }
 
 -- Inserts a component in lualine_c at left section

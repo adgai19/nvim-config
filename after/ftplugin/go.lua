@@ -47,8 +47,8 @@ require("go").setup({
 	-- float term recommand if you use richgo/ginkgo with terminal color
 })
 
-local augroup = vim.api.nvim_create_augroup("golua", { clear = true })
-vim.api.nvim_create_autocmd(
-	"BufWritePre",
-	{ pattern = "*.go", callback = require("go.format").goimport, group = augroup }
-)
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = require("go.format").goimport,
+	group = vim.api.nvim_create_augroup("golua", { clear = true }),
+})

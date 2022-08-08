@@ -14,6 +14,7 @@ return packer.startup(function()
 	-- helpers
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")
+	use("MunifTanjim/nui.nvim")
 	-- use("BurntSushi/ripgrep")
 	-- use("sharkdp/fd")
 	-- use("haringsrob/nvim_context_vt")

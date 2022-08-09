@@ -203,7 +203,7 @@ return packer.startup(function()
 	use({ "j-hui/fidget.nvim" })
 
 	use("jremmen/vim-ripgrep")
-	use("nvim-pack/nvim-spectre")
+	-- use("nvim-pack/nvim-spectre")
 	use({
 		"nvim-neorg/neorg",
 		requires = "nvim-lua/plenary.nvim",
@@ -215,4 +215,5 @@ return packer.startup(function()
 	use("marcushwz/nvim-workbench")
 	use("MattesGroeger/vim-bookmarks")
 	use("hashivim/vim-terraform")
+	use("anuvyklack/hydra.nvim")
 end)
